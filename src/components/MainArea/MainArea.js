@@ -34,7 +34,23 @@ const MainArea = ({ handlerMenu }) => {
           />
           <Route path="/products/:id" element={<ProductView />} />
           <Route path="/products/new" />
-          <Route path="/stores" element={<StoresList />} />
+          <Route
+            path="/stores"
+            element={
+              <>
+                <Header handlerMenu={handlerMenu}>
+                  <>
+                    <h2>Tiendas</h2>
+                    <div>
+                      <input type="text" />
+                      <button>Agregar Tienda</button>
+                    </div>
+                  </>
+                </Header>
+                <StoresList />
+              </>
+            }
+          />
           <Route path="/stores/:id" element={<StoreView />} />
           <Route path="/stores/new" />
           <Route path="/profile" element={<NotFound />} />

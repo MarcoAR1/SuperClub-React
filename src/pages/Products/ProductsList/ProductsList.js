@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './ProductsList.css'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import LinkBox from '../../../components/LinkBox/LinkBox'
 
 const ProductsList = () => {
   let [products, setProducts] = useState([])
@@ -19,26 +19,7 @@ const ProductsList = () => {
   return (
     <section className="section-products">
       {products.map((product, i) => (
-        <Link
-          key={i}
-          className="links-products"
-          to={'/products/' + product._id}
-        >
-          <article className="article-product">
-            <div className="container-products-info">
-              <img className="article-img" src={product.image} alt="" />
-              <div>
-                <p>{product.title}</p>
-                <p>#{product._id}</p>
-              </div>
-            </div>
-            <img
-              className="btn-product"
-              src="/assets/chevron-right (1).svg"
-              alt=""
-            />
-          </article>
-        </Link>
+        <LinkBox key={i} article={product} />
       ))}
     </section>
   )
