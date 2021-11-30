@@ -5,17 +5,16 @@ import ProductsList from '../../pages/Products/ProductsList/ProductsList'
 import ProductView from '../../pages/Products/ProductView/ProductView'
 import StoresList from '../../pages/Stores/StoresList/StoresList'
 import StoreView from '../../pages/Stores/StoreView/StoreView'
+import Header from "../Header/Header"
 import './MainArea.css'
 
-const MainArea = ({ handlerMenu }) => {
+
+const MainArea = ({  handlerMenu }) => {
+  
   return (
     <div className="mainArea">
-      <button onClick={handlerMenu} className="btnMenu">
-        <img src="/assets/menu.svg" alt="Menu" />
-      </button>
-      <header className="headerMainArea">
-
-      </header>
+      
+      <Header handlerMenu={handlerMenu} />
       <main class="mainAreaContent">
       <Routes>
         <Route path="/" element={<Home />} />

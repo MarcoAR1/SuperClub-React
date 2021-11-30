@@ -27,13 +27,9 @@
   }
 }
 
-.headerMainArea{
-  height: 7.2rem;
-  background-color: red;
-  
-}
+
 
 .mainAreaContent{
   height: calc(100vh - 7.2rem);
-  background-color: blue;
+  background-color: #efefef;
 }
