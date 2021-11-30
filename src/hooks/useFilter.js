@@ -1,32 +1,42 @@
 import { useEffect, useState } from 'react'
 
-const useFilter = ({ element, setElement }) => {
+const useFilter = () => {
   const [text, setText] = useState('')
   const [select, setSelect] = useState('')
-  const [storageElement, setStorageElement] = useState(null)
+  const [element, setElement] = useState([])
+  const [storageElement, setStorageElement] = useState([])
 
   useEffect(() => {
-    if (!storageElement) setStorageElement([...element])
-    else {
-      setElement &&
-        setElement(() => {
-          const filterElement = storageElement?.filter((elm) => {
-            const categoryExist = select ? elm.category === select : true
-            const startWithText = elm?.name
-              ?.toLowerCase()
-              .startsWith(text.toLowerCase().trim())
-            return categoryExist && startWithText
-          })
-          return filterElement
+    setElement &&
+      setElement(() => {
+        const filterElement = storageElement?.filter((elm) => {
+          const fixedText = text.toLowerCase().trim()
+          const categoryExist = select ? elm.category === select : true
+          const startNameWithText = elm?.name?.toLowerCase().match(fixedText)
+          const startTitleWithText = elm?.title?.toLowerCase().match(fixedText)
+          return categoryExist && (startNameWithText || startTitleWithText)
         })
-    }
-  }, [text, select, setElement, storageElement])
+        return filterElement
+      })
+    // eslint-disable-next-line
+  }, [text, select])
+
+  const handleChangeText = (e) => setText(e.target.value)
+
+  const handleChangeSelect = (e) => setSelect(e.target.value)
+
+  const handlerSetInitialElement = (elm = []) => {
+    setStorageElement([...elm])
+    setElement(elm)
+  }
 
   return {
     textValue: text,
     selectValue: select,
-    setText,
-    setSelect
+    element,
+    handleChangeText,
+    handleChangeSelect,
+    handlerSetInitialElement
   }
 }
 
