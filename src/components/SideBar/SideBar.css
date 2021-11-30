@@ -5,17 +5,37 @@
   transform: translateX(-100%);
   background-color: white;
   display: none;
+  flex-direction: column;
+  justify-content: space-between;
   position: absolute;
+  padding: 2rem;
 }
 
 .darkSideBar {
-  background-color: #494f51;
+  background-color: #222;
+}
+
+.logo {
+  width: 24rem;
+}
+
+.slideLinks {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.logoSlideLinksContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 
 @media (min-width: 1025px) {
   .sideBar {
     position: relative;
     transform: translateX(0);
-    display: block;
+    display: flex;
   }
 }
