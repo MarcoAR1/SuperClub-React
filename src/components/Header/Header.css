@@ -1,5 +1,16 @@
-.headerMainArea{
-    height: 7.2rem;
-    background-color: #efefef;
-    border-bottom: 1px solid black;
+.headerMainArea {
+  height: 7.2rem;
+  background-color: #efefef;
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+}
+
+@media (min-width: 1025px) {
+  .headerMainArea {
+    width: 100%;
+  }
 }
