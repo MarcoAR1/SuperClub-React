@@ -31,6 +31,7 @@ del,
 dfn,
 em,
 img,
+button,
 ins,
 kbd,
 q,
@@ -136,14 +137,16 @@ table {
   display: flex;
 }
 
-.sideBarOpen {
-  animation: slide 0.2s forwards;
-  width: 29.6rem;
-  display: block;
-}
+@media (max-width: 1024px) {
+  .sideBarOpen {
+    animation: slide 0.2s forwards;
+    width: 29.6rem;
+    display: block;
+  }
 
-.sideBarClose {
-  animation: reverse_slide 0.2s;
+  .sideBarClose {
+    animation: reverse_slide 0.2s;
+  }
 }
 
 @keyframes slide {

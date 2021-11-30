@@ -6,6 +6,7 @@
   background-color: white;
   display: none;
   position: absolute;
+  padding: 0 2rem;
 }
 
 .darkSideBar {
