@@ -1,0 +1,42 @@
+.article-product {
+  height: 8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  box-shadow: 0px 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
+  border-radius: 1.6rem;
+}
+
+.article-img {
+  height: 6.4rem;
+  width: 6.4rem;
+  left: 0.8rem;
+  top: 0.8rem;
+  border-radius: 0.8rem;
+  object-fit: contain;
+}
+
+.links-products {
+  width: 90%;
+  margin: 0.4rem 0;
+  text-decoration: none;
+  color: black;
+}
+
+.section-products {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-product {
+  margin-right: 0.8rem;
+}
+
+.container-products-info {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-left: 0.8rem;
+}
