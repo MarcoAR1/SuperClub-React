@@ -1,0 +1,21 @@
+.sideBar {
+  width: 29.6rem;
+  height: 100vh;
+  overflow-x: hidden;
+  transform: translateX(-100%);
+  background-color: white;
+  display: none;
+  position: absolute;
+}
+
+.darkSideBar {
+  background-color: #494f51;
+}
+
+@media (min-width: 1025px) {
+  .sideBar {
+    position: relative;
+    transform: translateX(0);
+    display: block;
+  }
+}
