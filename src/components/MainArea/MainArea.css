@@ -20,7 +20,7 @@
 
 @media (min-width: 1025px) {
   .mainArea {
-    width: 100vw;
+    width: calc(100vw - 296px);
   }
   .btnMenu {
     display: none;

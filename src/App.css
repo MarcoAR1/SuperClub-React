@@ -94,6 +94,7 @@ video {
   vertical-align: baseline;
 }
 html {
+  font-family: 'Open Sans', sans-serif;
   font-size: 10px;
 }
 /* HTML5 display-role reset for older browsers */
