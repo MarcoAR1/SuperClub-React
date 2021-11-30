@@ -11,11 +11,11 @@ const useFilter = ({ element, setElement }) => {
       setElement &&
         setElement(() => {
           const filterElement = storageElement?.filter((elm) => {
-            console.log(select && 'holq')
-            return (
-              (select ? elm.category === select : true) &&
-              elm?.name?.toLowerCase().startsWith(text.toLowerCase().trim())
-            )
+            const categoryExist = select ? elm.category === select : true
+            const startWithText = elm?.name
+              ?.toLowerCase()
+              .startsWith(text.toLowerCase().trim())
+            return categoryExist && startWithText
           })
           return filterElement
         })
