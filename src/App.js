@@ -6,7 +6,6 @@ import './App.css'
 function App() {
   const sideBar = useRef()
   const handlerMenu = () => {
-    console.log(sideBar)
     sideBar.current.classList.add('sideBarOpen')
     sideBar.current.focus()
   }
