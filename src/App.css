@@ -142,11 +142,12 @@ table {
   .sideBarOpen {
     animation: slide 0.2s forwards;
     width: 29.6rem;
-    display: block;
+    display: flex;
   }
 
   .sideBarClose {
     animation: reverse_slide 0.2s;
+    display: none;
   }
 }
 

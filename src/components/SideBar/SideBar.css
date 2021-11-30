@@ -5,6 +5,8 @@
   transform: translateX(-100%);
   background-color: white;
   display: none;
+  flex-direction: column;
+  justify-content: space-between;
   position: absolute;
   padding: 2rem;
 }
@@ -35,7 +37,5 @@
     position: relative;
     transform: translateX(0);
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
   }
 }

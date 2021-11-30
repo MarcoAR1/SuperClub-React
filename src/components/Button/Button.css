@@ -1,4 +1,5 @@
-.btn {
+.btn,
+.profileBtn {
   font-family: 'Open Sans', sans-serif;
   width: auto;
   height: 3.2rem;
@@ -14,6 +15,7 @@
   justify-content: center;
 }
 
-.btn:hover {
+.btn:hover,
+.profileBtn:hover {
   background-color: #ec0000;
 }
