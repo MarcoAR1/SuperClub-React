@@ -19,8 +19,8 @@ const ProductsList = () => {
   return (
     <section className="section-products">
       {products.map((product, i) => (
-        <Link className="links-products" to={'/products/' + product._id}>
-          <article className="article-product" key={i}>
+        <Link key={i} className="links-products" to={'/products/' + product._id}>
+          <article className="article-product" >
             <div className="container-products-info">
               <img className="article-img" src={product.image} alt="" />
               <div>

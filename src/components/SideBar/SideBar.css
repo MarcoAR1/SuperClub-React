@@ -1,6 +1,6 @@
 .sideBar {
   width: 29.6rem;
-  height: 100vh;
+  height: 100%;
   overflow-x: hidden;
   transform: translateX(-100%);
   background-color: white;
