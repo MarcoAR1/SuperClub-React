@@ -5,14 +5,17 @@ import ProductsList from '../../pages/Products/ProductsList/ProductsList'
 import ProductView from '../../pages/Products/ProductView/ProductView'
 import StoresList from '../../pages/Stores/StoresList/StoresList'
 import StoreView from '../../pages/Stores/StoreView/StoreView'
+import Header from "../Header/Header"
 import './MainArea.css'
 
-const MainArea = ({ handlerMenu }) => {
+
+const MainArea = ({  handlerMenu }) => {
+  
   return (
     <div className="mainArea">
-      <button onClick={handlerMenu} className="btnMenu">
-        <img src="/assets/menu.svg" alt="Menu" />
-      </button>
+      
+      <Header handlerMenu={handlerMenu} />
+      <main class="mainAreaContent">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<ProductsList />} />
@@ -24,6 +27,7 @@ const MainArea = ({ handlerMenu }) => {
         <Route path="/profile" element={<NotFound />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      </main>
     </div>
   )
 }
