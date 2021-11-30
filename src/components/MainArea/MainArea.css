@@ -5,7 +5,7 @@
 }
 
 .btnMenu {
-  background: none;
+  background-color: inherit;
   border: none;
 }
 
@@ -25,4 +25,15 @@
   .btnMenu {
     display: none;
   }
+}
+
+.headerMainArea{
+  height: 7.2rem;
+  background-color: red;
+  
+}
+
+.mainAreaContent{
+  height: calc(100vh - 7.2rem);
+  background-color: blue;
 }

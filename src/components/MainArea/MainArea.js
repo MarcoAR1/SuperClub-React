@@ -13,6 +13,10 @@ const MainArea = ({ handlerMenu }) => {
       <button onClick={handlerMenu} className="btnMenu">
         <img src="/assets/menu.svg" alt="Menu" />
       </button>
+      <header className="headerMainArea">
+
+      </header>
+      <main class="mainAreaContent">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<ProductsList />} />
@@ -24,6 +28,7 @@ const MainArea = ({ handlerMenu }) => {
         <Route path="/profile" element={<NotFound />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      </main>
     </div>
   )
 }
