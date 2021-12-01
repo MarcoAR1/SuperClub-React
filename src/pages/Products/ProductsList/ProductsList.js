@@ -1,12 +1,12 @@
 import { useEffect } from 'react'
 import './ProductsList.css'
-import axios from 'axios'
 import LinkBox from '../../../components/LinkBox/LinkBox'
 import Loader from '../../../components/Loader/Loader'
 import Header from '../../../components/Header/Header'
 import SearchBar from '../../../components/SearchBar/SearchBar'
 import Button from '../../../components/Button/Button'
 import useFilter from '../../../hooks/useFilter'
+import axiosActual from '../../../utils'
 
 const ProductsList = ({ handlerMenu }) => {
   const {
@@ -18,9 +18,7 @@ const ProductsList = ({ handlerMenu }) => {
 
   useEffect(() => {
     ;(async function () {
-      let { data } = await axios.get(
-        'https://dhfakestore2.herokuapp.com/api/products/'
-      )
+      let { data } = await axiosActual.get('products')
       setTimeout(() => handlerSetInitialElement(data), 200)
     })()
   }, [handlerSetInitialElement])
