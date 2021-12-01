@@ -1,6 +1,6 @@
 .mainArea {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #efefef;
 }
 
@@ -21,6 +21,8 @@
 @media (min-width: 1025px) {
   .mainArea {
     width: calc(100vw - 29.6rem);
+    position: absolute;
+    right: 0;
   }
   .btnMenu {
     display: none;
