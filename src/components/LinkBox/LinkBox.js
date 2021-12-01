@@ -2,18 +2,22 @@ import React from 'react'
 import './LinkBox.css'
 import { Link } from 'react-router-dom'
 
-const LinkBox = ({ article }) => {
+const LinkBox = ({ article, urlRef }) => {
   return (
-    <Link className="links-box" to={'/products/' + article._id}>
+    <Link className="links-box" to={urlRef + article._id}>
       <article className="article-box">
         <div className="container-box-info">
           <img
             className="article-img"
-            src={article.image ? article.image : article.logo}
+            src={
+              urlRef === '/products/'
+                ? article.image ?? '/assets/package-variant-closed.svg'
+                : article.logo ?? '/assets/store.svg'
+            }
             alt=""
           />
           <div>
-            <p>{article.title ? article.title : article.name}</p>
+            <p>{article.title ?? article.name}</p>
             <p>#{article._id}</p>
           </div>
         </div>

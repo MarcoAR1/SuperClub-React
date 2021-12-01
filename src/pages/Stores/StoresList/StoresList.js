@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import './StoresList.css'
 import axios from 'axios'
 import LinkBox from '../../../components/LinkBox/LinkBox'
+import Loader from '../../../components/Loader/Loader'
 
 const StoresList = () => {
   let [stores, setStores] = useState([])
@@ -11,17 +12,22 @@ const StoresList = () => {
       let { data } = await axios.get(
         'https://dhfakestore2.herokuapp.com/api/stores/'
       )
-      setStores(data)
-      console.log(data)
+      setTimeout(() => setStores(data), 200)
     })()
   }, [])
 
   return (
-    <section className="section-stores">
-      {stores.map((store, i) => (
-        <LinkBox key={i} article={store} />
-      ))}
-    </section>
+    <>
+      {stores.length ? (
+        <section className="section-stores">
+          {stores.map((store, i) => (
+            <LinkBox key={i} article={store} urlRef="/stores/" />
+          ))}
+        </section>
+      ) : (
+        <Loader />
+      )}
+    </>
   )
 }
 

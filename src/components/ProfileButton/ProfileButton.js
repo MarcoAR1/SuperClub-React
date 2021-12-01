@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router'
-import Button from '../Button/Button'
 import './ProfileButton.css'
 
 const ProfileButton = ({ name }) => {

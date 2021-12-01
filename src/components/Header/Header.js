@@ -1,7 +1,7 @@
 import './Header.css'
 const Header = ({ handlerMenu, children }) => {
   return (
-    <header class="headerMainArea">
+    <header className="headerMainArea">
       <button onClick={handlerMenu} className="btnMenu">
         <img src="/assets/menu.svg" alt="Menu" />
       </button>

@@ -1,3 +1,10 @@
+.links-box {
+  width: 90%;
+  margin: 0.4rem 0;
+  text-decoration: none;
+  color: black;
+}
+
 .article-box {
   height: 8rem;
   display: flex;
@@ -29,6 +36,8 @@
   font-size: 1.6rem;
 }
 
+/* DARK MODE */
+
 .article-box-dark {
   background-color: #494f51;
   color: white;
@@ -42,11 +51,4 @@
 .btn-box-dark {
   filter: invert(100%) sepia(51%) saturate(0%) hue-rotate(247deg)
     brightness(110%) contrast(100%);
-}
-
-.links-box {
-  width: 90%;
-  margin: 0.4rem 0;
-  text-decoration: none;
-  color: black;
 }
