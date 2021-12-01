@@ -1,0 +1,22 @@
+.headerMainArea {
+  height: 7.2rem;
+  background-color: #efefef;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  padding: 0 2rem;
+}
+
+.header-container-search {
+  display: flex;
+  gap: 2rem;
+  width: 50rem;
+}
+
+@media (min-width: 1025px) {
+  .headerMainArea {
+    width: calc(100vw - 296px);
+  }
+}
