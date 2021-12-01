@@ -1,7 +1,6 @@
 .headerMainArea {
   height: 7.2rem;
   background-color: #efefef;
-  border-bottom: 1px solid black;
   display: flex;
   justify-content: space-between;
   align-items: center;
