@@ -2,7 +2,6 @@
 
 .search-bar {
   width: 70%;
-  margin: auto;
   height: 3.2rem;
   border-radius: 1.6rem;
   padding: 0.8rem 0.8rem;
@@ -68,4 +67,32 @@
 .search-bar-btn-dark img {
   filter: invert(100%) sepia(51%) saturate(0%) hue-rotate(247deg)
     brightness(110%) contrast(100%);
+}
+
+@media (max-width: 1024px) {
+  .search-bar {
+    width: auto;
+    padding: 0.5rem;
+  }
+  .search-bar-input {
+    width: 0;
+    padding: 0;
+  }
+
+  .search-bar:hover .search-bar-input {
+    width: 100%;
+    padding: 0 0.8rem;
+  }
+
+  .search-bar-input:focus .search-bar {
+    width: 100%;
+  }
+  .search-bar:hover {
+    width: 100%;
+  }
+
+  .search-bar-input:focus {
+    width: 100%;
+    padding: 0 0.8rem;
+  }
 }

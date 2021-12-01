@@ -19,3 +19,9 @@
 .profileBtn:hover {
   background-color: #ec0000;
 }
+
+@media (max-width: 1024px) {
+  .btn {
+    width: 0;
+  }
+}
