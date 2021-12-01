@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './SlideLink.css'
 
-const SlideLink = ({ image, handlerAllSlideLinks, link, children }) => {
+const SlideLink = ({ image, handlerAllSlideLinks, link, isDark, children }) => {
   window.addEventListener('load', () => {
     const location = window.location.pathname
     if (location === link)
@@ -13,9 +13,6 @@ const SlideLink = ({ image, handlerAllSlideLinks, link, children }) => {
 
   const slideLink = useRef()
   const navigate = useNavigate()
-
-  // TODO: Agregar el flag de isDark cuando se haga la US15
-  const isDark = false
 
   const handlerSlideLink = () => {
     handlerAllSlideLinks(isDark)

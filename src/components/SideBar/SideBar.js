@@ -6,6 +6,9 @@ import './SideBar.css'
 const SideBar = React.forwardRef(({ closeMenu }, ref) => {
   const slideLinks = useRef()
 
+  // TODO: Agregar el flag de isDark cuando se haga la US15
+  const isDark = false
+
   const handlerAllSlideLinks = (isDark) => {
     const selected = [...slideLinks.current.children].find(
       (slideLink) =>
@@ -39,6 +42,7 @@ const SideBar = React.forwardRef(({ closeMenu }, ref) => {
             handlerAllSlideLinks={handlerAllSlideLinks}
             link="/"
             image="/assets/home.svg"
+            isDark={isDark}
           >
             Inicio
           </SlideLink>
@@ -46,6 +50,7 @@ const SideBar = React.forwardRef(({ closeMenu }, ref) => {
             handlerAllSlideLinks={handlerAllSlideLinks}
             link="/products"
             image="/assets/package-variant-closed.svg"
+            isDark={isDark}
           >
             Productos
           </SlideLink>
@@ -53,12 +58,18 @@ const SideBar = React.forwardRef(({ closeMenu }, ref) => {
             handlerAllSlideLinks={handlerAllSlideLinks}
             link="/stores"
             image="/assets/store.svg"
+            isDark={isDark}
           >
             Tiendas
           </SlideLink>
         </div>
       </div>
-      <ProfileButton name={'Olivia'} />
+      <ProfileButton
+        name="Olivia"
+        link="/profile"
+        handlerAllSlideLinks={handlerAllSlideLinks}
+        isDark={isDark}
+      />
     </div>
   )
 })
