@@ -40,15 +40,17 @@ const StoresList = ({ handlerMenu }) => {
           </div>
         </>
       </Header>
-      {stores.length ? (
-        <section className="section-stores">
-          {stores.map((store, i) => (
-            <LinkBox key={i} article={store} urlRef="/stores/" />
-          ))}
-        </section>
-      ) : (
-        <Loader />
-      )}
+      <main className="mainAreaContent">
+        {stores.length ? (
+          <section className="section-stores">
+            {stores.map((store, i) => (
+              <LinkBox key={i} article={store} urlRef="/stores/" />
+            ))}
+          </section>
+        ) : (
+          <Loader />
+        )}
+      </main>
     </>
   )
 }
