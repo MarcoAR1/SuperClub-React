@@ -43,10 +43,10 @@ const Home = ({handlerMenu}) => {
             <p> {products.length} Productos</p>
           </div>
           <div className="options">
-            <Link to="/products" style={{ textDecoration: 'none' }}>
+            <Link to="/products" >
               <button className="watchListBtn">Ver Listado</button>
             </Link>
-            <Link to="/products/new" style={{ textDecoration: 'none' }}>
+            <Link to="/products/new" >
               <button className="addBtn">Agregar Producto</button>
             </Link>
           </div>

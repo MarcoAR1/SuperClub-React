@@ -1,3 +1,4 @@
+import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Home from '../../pages/Home/Home'
 import NotFound from '../../pages/NotFound/NotFound'
@@ -7,9 +8,9 @@ import StoresList from '../../pages/Stores/StoresList/StoresList'
 import StoreView from '../../pages/Stores/StoreView/StoreView'
 import './MainArea.css'
 
-const MainArea = ({ handlerMenu }) => {
+const MainArea = React.forwardRef(({ handlerMenu }, ref) => {
   return (
-    <div className="mainArea">
+    <div className="mainArea" ref={ref}>
       <Routes>
         <Route path="/" element={<Home handlerMenu={handlerMenu} />} />
         <Route
@@ -35,6 +36,6 @@ const MainArea = ({ handlerMenu }) => {
       </Routes>
     </div>
   )
-}
+})
 
 export default MainArea
