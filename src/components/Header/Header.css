@@ -7,6 +7,12 @@
   position: fixed;
   width: 100%;
   padding: 0 2rem;
+}
+
+.header-container-search {
+  display: flex;
+  gap: 2rem;
+  width: 50rem;
   z-index: 2;
 }
 
