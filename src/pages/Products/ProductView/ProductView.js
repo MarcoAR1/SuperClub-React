@@ -50,6 +50,14 @@ const ProductView = () => {
     })
   }
 
+  const handleChangeStock = (e) => {
+    setCurrentProduct((prev) => {
+        const copy = { ...prev }
+        copy.stock = e.target.value
+        return copy
+      })
+  }
+
   const handleRemoveImg = (img) => {
     console.log(img)
     setCurrentProduct((prev) => {
@@ -159,6 +167,7 @@ const ProductView = () => {
                 name="stock"
                 placeholder="0"
                 value={currentProduct.stock}
+                onChange={handleChangeStock}
             />
             <button onClick={handleClickRest} className="buttonPageProduct">
                 -
@@ -193,7 +202,7 @@ const ProductView = () => {
         <div className="containerNuevaImagenInput">
             <label for="imagen">Nueva Imagen</label>
             <input
-            onKeyPress={handleInsertImg}
+            onKeyDown={handleInsertImg}
             ref={insertImgInput}
             className="inputPageProduct"
             type="text"
