@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 const useFilter = ({
   textFilter = 'name',
@@ -33,10 +33,10 @@ const useFilter = ({
 
   const handleChangeSelect = (e) => setSelect(e.target.value)
 
-  const handlerSetInitialElement = (elm = []) => {
+  const handlerSetInitialElement = useCallback((elm = []) => {
     setStorageElement([...elm])
     setElement(elm)
-  }
+  }, [])
 
   return {
     textValue: text,
