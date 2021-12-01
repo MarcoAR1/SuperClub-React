@@ -191,7 +191,7 @@ const ProductView = ({storesName}) => {
             name="tienda"
             >
             <option value="">Selecciona la tienda</option>
-            {storesName.map((store) => (
+            {storesName?.map((store) => (
                 <option value={store._id}>{store.name}</option>
             ))}
             </select>
