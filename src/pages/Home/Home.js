@@ -8,7 +8,7 @@ const Home = () => {
   useEffect(() => {
     ;(async function () {
       const { data } = await axios.get(
-        'https://dhfakestore2.herokuapp.com/api/products/'
+        'http://dhfakestore2.herokuapp.com/api/products/'
       )
       setProducts(data)
     })()
@@ -18,7 +18,7 @@ const Home = () => {
   useEffect(() => {
     ;(async function () {
       const { data } = await axios.get(
-        'https://dhfakestore2.herokuapp.com/api/stores/'
+        'http://dhfakestore2.herokuapp.com/api/stores/'
       )
       setStores(data)
     })()

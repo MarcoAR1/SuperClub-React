@@ -35,7 +35,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #ffffff;
+  background-color: #ffffff;
   box-shadow: 0px 0.4rem 0.4rem rgb(0 0 0 / 25%);
   border-radius: 1.6rem;
 }
@@ -48,6 +48,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  background-color: #ffffff;
 }
 .darkBoxes {
   background-color: #222;
@@ -72,7 +73,7 @@
 
 .darkWatchListBtn,
 .darkAddBtn {
-  background-color: #494f51;
+  background: #494f51;
   color: #efefef;
 }
 .watchListBtn:hover,
