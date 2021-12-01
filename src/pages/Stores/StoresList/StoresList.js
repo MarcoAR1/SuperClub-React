@@ -1,12 +1,12 @@
 import { useEffect } from 'react'
 import './StoresList.css'
-import axios from 'axios'
 import LinkBox from '../../../components/LinkBox/LinkBox'
 import Loader from '../../../components/Loader/Loader'
 import Header from '../../../components/Header/Header'
 import SearchBar from '../../../components/SearchBar/SearchBar'
 import Button from '../../../components/Button/Button'
 import useFilter from '../../../hooks/useFilter'
+import axiosActual from '../../../utils'
 
 const StoresList = ({ handlerMenu }) => {
   const {
@@ -18,9 +18,7 @@ const StoresList = ({ handlerMenu }) => {
 
   useEffect(() => {
     ;(async function () {
-      let { data } = await axios.get(
-        'https://dhfakestore2.herokuapp.com/api/stores/'
-      )
+      let { data } = await axiosActual.get('stores')
       setTimeout(() => handlerSetInitialElement(data), 200)
     })()
   }, [handlerSetInitialElement])
@@ -40,15 +38,17 @@ const StoresList = ({ handlerMenu }) => {
           </div>
         </>
       </Header>
-      {stores.length ? (
-        <section className="section-stores">
-          {stores.map((store, i) => (
-            <LinkBox key={i} article={store} urlRef="/stores/" />
-          ))}
-        </section>
-      ) : (
-        <Loader />
-      )}
+      <main className="mainAreaContent">
+        {stores.length ? (
+          <section className="section-stores">
+            {stores.map((store, i) => (
+              <LinkBox key={i} article={store} urlRef="/stores/" />
+            ))}
+          </section>
+        ) : (
+          <Loader />
+        )}
+      </main>
     </>
   )
 }

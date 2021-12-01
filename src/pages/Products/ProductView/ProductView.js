@@ -3,6 +3,8 @@ import { useState, useRef , useEffect} from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import MuestraPageProduct from '../../../components/MuestraPageProduct/MuestraPageProduct'
+import Header from "../../../components/Header/Header"
+import axiosActual from '../../../utils'
 
 
 const ProductView = ({storesName}) => {
@@ -101,8 +103,8 @@ const ProductView = ({storesName}) => {
   }
 
   const handleSaveData = () => {
-    axios.put(
-      `https://dhfakestore2.herokuapp.com/api/products/${currentProduct._id}/edit`,
+    axiosActual.put(
+      `products/${currentProduct._id}/edit`,
       currentProduct
     )
   }
@@ -112,14 +114,14 @@ const ProductView = ({storesName}) => {
   }
 
   const handleDelete = () => {
-    axios.delete(
-      `https://dhfakestore2.herokuapp.com/api/products/${currentProduct._id}/delete`
+    axiosActual.delete(
+      `products/${currentProduct._id}/delete`
     )
   }
 
   useEffect(() => {
-    axios.get(
-        `https://dhfakestore2.herokuapp.com/api/products/${id}`
+    axiosActual.get(
+        `products/${id}`
     ).then(({data}) =>{ 
         setCurrentProduct(data)
         setProduct(data)}) 
@@ -127,107 +129,124 @@ const ProductView = ({storesName}) => {
 
   return (
     <div>
+      <Header>
         <div className = "containerIdDelete">
             <p className="productId"> Productos {">"} #{currentProduct._id}</p>
             <button className="buttonDeleteProduct" onClick={handleDelete}>Eliminar</button>
         </div>
-        <div className="formPageProduct">
+      </Header>
+      <main className="mainAreaContent">
+        <div className="productViewContainer">
+          <div className="formPageProduct">
             <MuestraPageProduct product={currentProduct} />
             <p className="tituloProductPage">Información</p>
             <label for="name">Nombre</label>
             <input
-            onChange={handleTitle}
-            className="inputPageProduct"
-            type="text"
-            name="title"
-            id="title"
-            value={currentProduct.title}
-            />{mensajeError && <p>{mensajeError}</p>}
+              onChange={handleTitle}
+              className="inputPageProduct"
+              type="text"
+              name="title"
+              id="title"
+              value={currentProduct.title}
+            />
+            {mensajeError && <p>{mensajeError}</p>}
 
-            <label for="valor" >Valor</label>
+            <label for="valor">Valor</label>
             <input
-                min="0"
-            onChange={handlePrice}
-            className="inputPageProduct"
-            type="number"
-            name="price"
-            id="price"
-            value={currentProduct.price}
+              min="0"
+              onChange={handlePrice}
+              className="inputPageProduct"
+              type="number"
+              name="price"
+              id="price"
+              value={currentProduct.price}
             />
 
             <label for="stock">Stock</label>
             <div className="containerInputPageProductStock">
-            <button onClick={handleClickSum} className="buttonPageProduct">
-                +
-            </button>
-            <input
+              <button onClick={handleClickRest} className="buttonPageProduct">
+                -
+              </button>
+              <input
                 className="inputPageProductStock"
                 type="text"
                 name="stock"
                 placeholder="0"
                 value={currentProduct.stock}
                 onChange={handleChangeStock}
-            />
-            <button onClick={handleClickRest} className="buttonPageProduct">
-                -
-            </button>
+              />
+              <button onClick={handleClickSum} className="buttonPageProduct">
+                +
+              </button>
             </div>
 
             <label for="description">descripción</label>
             <textarea
-            onChange={handleDescription}
-            className="inputPageProductArea"
-            rows="10"
-            cols="20"
-            name="description"
-            value={currentProduct.description}
+              onChange={handleDescription}
+              className="inputPageProductArea"
+              rows="10"
+              cols="20"
+              name="description"
+              value={currentProduct.description}
             />
 
             <label for="tienda">tienda</label>
             <select
-            value={currentProduct.store || ''}
-            onChange={handleSelectStore}
-            className="inputPageProduct"
-            name="tienda"
+              value={currentProduct.store || ''}
+              onChange={handleSelectStore}
+              className="inputPageProduct"
+              name="tienda"
             >
-            <option value="">Selecciona la tienda</option>
-            {storesName?.map((store) => (
-                <option value={store._id}>{store.name}</option>
-            ))}
+              <option value="">Selecciona la tienda</option>
+              {storesName?.map((store) => (
+                <option value={store}>{store}</option>
+              ))}
             </select>
-        </div>
+          </div>
 
-        <p className="tituloProductPage">Galeria de Imagenes</p>
-        <div className="containerNuevaImagenInput">
+          <p className="tituloProductPage">Galeria de Imagenes</p>
+          <div className="containerNuevaImagenInput">
             <label for="imagen">Nueva Imagen</label>
             <input
-            onKeyDown={handleInsertImg}
-            ref={insertImgInput}
-            className="inputPageProduct"
-            type="text"
-            name="imagen"
+              onKeyDown={handleInsertImg}
+              ref={insertImgInput}
+              className="inputPageProduct"
+              type="text"
+              name="imagen"
             ></input>
-        </div>
-        <p className="tituloProductPage">Imagenes actuales</p>
+          </div>
+          <p className="tituloProductPage">Imagenes actuales</p>
 
-        <div className="cartImgProductPage">
+          <div className="cartImgProductPage">
             {currentProduct?.gallery?.map((element) => (
-            <div className="cartProductPage">
-                <img className="imgCartPage" src={element} alt={currentProduct.title}></img>
+              <div className="cartProductPage">
+                <img
+                  className="imgCartPage"
+                  src={element}
+                  alt={currentProduct.title}
+                ></img>
                 <p className="textCartProductPage">{element}</p>
                 <button onClick={() => handleRemoveImg(element)}>Quitar</button>
-            </div>
+              </div>
             ))}
-        </div>
-
-        <div className="buttonsPageProduct">
-            <button className="buttonCancelarPageProduct" onClick={handleCancel}>
-            cancelar
+          </div>
+          <div className="buttonsPageProduct">
+            <button
+              className="buttonCancelarPageProduct"
+              onClick={handleCancel}
+            >
+              Cancelar
             </button>
-            <button disabled={Boolean(mensajeError)} className="buttonGuardarPageProduct" onClick={handleSaveData}>
-            guardar
+            <button
+              disabled={Boolean(mensajeError)}
+              className="buttonGuardarPageProduct"
+              onClick={handleSaveData}
+            >
+              Guardar
             </button>
+          </div>
         </div>
+      </main>
     </div>
   )
 }

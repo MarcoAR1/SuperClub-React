@@ -149,6 +149,9 @@ q:after {
   content: '';
   content: none;
 }
+textarea {
+  font-family: 'Open Sans', sans-serif;
+}
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -156,6 +159,9 @@ table {
 
 .sideBarMainAreaContainer {
   display: flex;
+}
+a {
+  text-decoration: none;
 }
 
 @media (max-width: 1024px) {
