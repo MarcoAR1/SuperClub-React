@@ -3,10 +3,11 @@ import { useState, useRef, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import MuestraPageProduct from '../../../components/MuestraPageProduct/MuestraPageProduct'
+import Header from '../../../components/Header/Header'
 
 const storesName = ['amazon', 'apple', 'dell']
 
-const ProductView = () => {
+const ProductView = ({ handlerMenu }) => {
   const [currentProduct, setCurrentProduct] = useState({})
   const [mensajeError, setMensajeError] = useState('')
   const [product, setProduct] = useState({})
@@ -131,15 +132,19 @@ const ProductView = () => {
 
   return (
     <div>
-      <div className="containerIdDelete">
-        <p className="productId">
-          {' '}
-          Productos {'>'} #{currentProduct._id}
-        </p>
-        <button className="buttonDeleteProduct" onClick={handleDelete}>
-          Eliminar
-        </button>
-      </div>
+      <Header handlerMenu={handlerMenu}>
+        <>
+          <div className="containerIdDelete">
+            <p className="productId">
+              {' '}
+              Productos {'>'} #{currentProduct._id}
+            </p>
+            <button className="buttonDeleteProduct" onClick={handleDelete}>
+              Eliminar
+            </button>
+          </div>
+        </>
+      </Header>
       <div className="formPageProduct">
         <MuestraPageProduct product={currentProduct} />
         <p className="tituloProductPage">Información</p>

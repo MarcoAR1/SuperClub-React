@@ -17,7 +17,10 @@ const MainArea = ({ handlerMenu }) => {
             path="/products"
             element={<ProductsList handlerMenu={handlerMenu} />}
           />
-          <Route path="/products/:id" element={<ProductView />} />
+          <Route
+            path="/products/:id"
+            element={<ProductView handlerMenu={handlerMenu} />}
+          />
           <Route path="/products/new" />
           <Route
             path="/stores"
