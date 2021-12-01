@@ -2,6 +2,7 @@
   font-family: 'Open Sans', sans-serif;
   margin-left: 10px;
   margin-right: 10px;
+  width: 100%;
 }
 
 .hiUsername {
@@ -9,6 +10,8 @@
   font-size: 40px;
   margin-top: 15px;
   margin-bottom: 20px;
+  width: 100%;
+  padding-left: 1rem;
 }
 .darkHiUsername {
   color: #efefef;
@@ -48,7 +51,6 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background-color: #ffffff;
 }
 .darkBoxes {
   background-color: #222;
