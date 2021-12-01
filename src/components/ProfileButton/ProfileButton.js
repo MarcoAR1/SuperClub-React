@@ -1,11 +1,12 @@
 import { useNavigate } from 'react-router'
 import './ProfileButton.css'
 
-const ProfileButton = ({ name }) => {
+const ProfileButton = ({ name, link, handlerAllSlideLinks, isDark }) => {
   const navigate = useNavigate()
 
   const handlerProfileBtn = () => {
-    navigate('/profile')
+    handlerAllSlideLinks && handlerAllSlideLinks(isDark)
+    navigate(link)
   }
 
   return (
@@ -18,6 +19,11 @@ const ProfileButton = ({ name }) => {
       {name}
     </div>
   )
+}
+
+ProfileButton.defaultProps = {
+  handlerProfileBtn: null,
+  isDark: false
 }
 
 export default ProfileButton
