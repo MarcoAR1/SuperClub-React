@@ -132,6 +132,7 @@ section {
 }
 body {
   line-height: 1;
+  min-height: 100vh;
 }
 ol,
 ul {
@@ -148,6 +149,9 @@ q:after {
   content: '';
   content: none;
 }
+textarea {
+  font-family: 'Open Sans', sans-serif;
+}
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -155,6 +159,9 @@ table {
 
 .sideBarMainAreaContainer {
   display: flex;
+}
+a {
+  text-decoration: none;
 }
 
 @media (max-width: 1024px) {

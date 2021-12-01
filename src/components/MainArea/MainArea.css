@@ -7,7 +7,7 @@
 }
 
 .btnMenu {
-  background: none;
+  background-color: inherit;
   border: none;
 }
 
@@ -29,4 +29,14 @@
   .btnMenu {
     display: none;
   }
+}
+
+.mainAreaContent {
+  height: calc(100vh - 7.2rem);
+  background-color: #efefef;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  justify-content: center;
 }

@@ -13,10 +13,15 @@
   display: flex;
   gap: 2rem;
   width: 50rem;
+  z-index: 2;
 }
 
 @media (min-width: 1025px) {
   .headerMainArea {
     width: calc(100vw - 296px);
+  }
+
+  .header-container-search {
+    transition: all 300ms;
   }
 }
