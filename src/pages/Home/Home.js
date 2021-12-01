@@ -30,6 +30,7 @@ const Home = () => {
         <div className="box">
           <div className="amount">
             <img
+              className="boxLogo"
               src="/assets/package-variant-closed.svg"
               style={{ height: 53, width: 36 }}
               alt="Logo"
@@ -48,6 +49,7 @@ const Home = () => {
         <div className="box">
           <div className="amount">
             <img
+              className="storeLogo"
               src="/assets/store.svg"
               style={{ height: 53, width: 36 }}
               alt="Logo"
