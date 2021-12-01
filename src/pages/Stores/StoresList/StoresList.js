@@ -1,17 +1,15 @@
 import { useEffect, useState } from 'react'
 import './StoresList.css'
-import axios from 'axios'
 import LinkBox from '../../../components/LinkBox/LinkBox'
 import Loader from '../../../components/Loader/Loader'
+import axiosActual from '../../../utils'
 
 const StoresList = () => {
   let [stores, setStores] = useState([])
 
   useEffect(() => {
     ;(async function () {
-      let { data } = await axios.get(
-        'https://dhfakestore2.herokuapp.com/api/stores/'
-      )
+      let { data } = await axiosActual.get('products')
       setTimeout(() => setStores(data), 200)
     })()
   }, [])
