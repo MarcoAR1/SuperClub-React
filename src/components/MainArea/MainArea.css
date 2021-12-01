@@ -33,4 +33,5 @@
   height: calc(100vh - 7.2rem);
   background-color: #efefef;
   display: flex;
+  justify-content: center;
 }
