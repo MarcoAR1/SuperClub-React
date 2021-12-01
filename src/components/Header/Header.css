@@ -13,6 +13,7 @@
 .header-container-search {
   display: flex;
   gap: 2rem;
+  width: 50rem;
 }
 
 @media (min-width: 1025px) {
