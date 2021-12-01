@@ -9,12 +9,14 @@ const LinkBox = ({ article, urlRef }) => {
         <div className="container-box-info">
           <img
             className="article-img"
-            src={
-              urlRef === '/products/'
-                ? article.image ?? '/assets/package-variant-closed.svg'
-                : article.logo ?? '/assets/store.svg'
-            }
+            src={article.image ?? article.logo ?? ''}
             alt=""
+            onError={(e) =>
+              (e.target.src =
+                urlRef === '/products/'
+                  ? '/assets/package-variant-closed.svg'
+                  : '/assets/store.svg')
+            }
           />
           <div>
             <p>{article.title ?? article.name}</p>
