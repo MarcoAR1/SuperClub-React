@@ -2,7 +2,6 @@
   width: 100vw;
   min-height: 100vh;
   background-color: #efefef;
-  display: flex;
 }
 
 .btnMenu {
@@ -31,6 +30,7 @@
 }
 
 .mainAreaContent {
-  height: calc(100% - 7.2rem);
+  height: calc(100vh - 7.2rem);
   background-color: #efefef;
+  display: flex;
 }
