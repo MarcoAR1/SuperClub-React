@@ -1,0 +1,13 @@
+.section-products {
+  padding-top: 8rem;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 1025px) {
+  .section-products {
+    width: calc(100vw - 29.6rem);
+  }
+}

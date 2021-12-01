@@ -1,0 +1,71 @@
+/* searchBar */
+
+.search-bar {
+  width: 70%;
+  margin: auto;
+  height: 3.2rem;
+  border-radius: 1.6rem;
+  padding: 0.8rem 0.8rem;
+  color: rgba(0, 0, 0, 1);
+  background-color: white;
+  display: flex;
+  align-items: center;
+  border: 0.1rem solid #494f51;
+}
+
+.search-bar-input {
+  border: 0;
+  padding: 0 0.8rem;
+  font-size: 1.6rem;
+  height: 3rem;
+  width: 100%;
+  border-radius: 1.6rem;
+  background-color: transparent;
+}
+
+.search-bar-input::placeholder {
+  font-weight: 500;
+  font-size: 1.6rem;
+  color: #494f51;
+}
+
+.search-bar-input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.search-bar-input:focus {
+  outline: none;
+}
+
+.search-bar-btn {
+  background-color: transparent;
+  width: 2rem;
+  height: 2rem;
+}
+
+.search-bar-btn img {
+  filter: invert(47%) sepia(84%) saturate(0%) hue-rotate(189deg) brightness(91%)
+    contrast(82%);
+  width: 2rem;
+  height: 2rem;
+}
+
+.search-bar-btn:hover {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+/* DARK MODE */
+.search-bar-dark {
+  background-color: #494f51;
+  border: 0.1rem solid white;
+}
+
+.search-bar-input-dark::placeholder {
+  color: white;
+}
+
+.search-bar-btn-dark img {
+  filter: invert(100%) sepia(51%) saturate(0%) hue-rotate(247deg)
+    brightness(110%) contrast(100%);
+}
