@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import './StoresList.css'
 import LinkBox from '../../../components/LinkBox/LinkBox'
 import Loader from '../../../components/Loader/Loader'
@@ -7,6 +7,7 @@ import SearchBar from '../../../components/SearchBar/SearchBar'
 import Button from '../../../components/Button/Button'
 import useFilter from '../../../hooks/useFilter'
 import axiosActual from '../../../utils'
+import useWindowSize from '../../../hooks/useResize'
 
 const StoresList = ({ handlerMenu }) => {
   const {
@@ -15,6 +16,10 @@ const StoresList = ({ handlerMenu }) => {
     textValue,
     handleChangeText
   } = useFilter()
+
+  const [width] = useWindowSize()
+  const title = useRef()
+  const container = useRef()
 
   useEffect(() => {
     ;(async function () {
@@ -27,14 +32,24 @@ const StoresList = ({ handlerMenu }) => {
     <>
       <Header handlerMenu={handlerMenu}>
         <>
-          <h2 className="header-title">Tiendas</h2>
-          <div className="header-container-search">
+          <h2 ref={title} className="header-title">
+            Tiendas
+          </h2>
+          <div ref={container} className="header-container-search">
             <SearchBar
               placeholder="Buscar tiendas"
               textValue={textValue}
               handleChangeText={handleChangeText}
+              title={title}
+              container={container}
             />
-            <Button>Agregar Tienda</Button>
+            <Button link="/stores/new">
+              {width > 1024 ? (
+                'Agregar Tienda'
+              ) : (
+                <i className="fas fa-plus"></i>
+              )}
+            </Button>
           </div>
         </>
       </Header>

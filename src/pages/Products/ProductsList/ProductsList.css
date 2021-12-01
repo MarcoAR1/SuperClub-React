@@ -5,8 +5,19 @@
   align-items: center;
 }
 
+.header-container-search {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2rem;
+}
+
 @media (min-width: 1025px) {
   .section-products {
     width: calc(100vw - 29.6rem);
+  }
+  .header-container-search {
+    display: flex;
+    gap: 2rem;
+    width: 50rem;
   }
 }
