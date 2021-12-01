@@ -2,9 +2,9 @@ import React from 'react'
 
 const StoreView = () => {
     return (
-        <div>
+        <main className="mainAreaContent">
             
-        </div>
+        </main>
     )
 }
 

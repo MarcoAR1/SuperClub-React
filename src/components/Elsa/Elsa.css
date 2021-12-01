@@ -1,0 +1,18 @@
+.elsaContainer {
+  align-self: center;
+}
+
+.elsaImg {
+  width: 20%;
+  margin: auto;
+  display: block;
+  position: relative;
+  left: 3rem;
+  margin-bottom: 1rem;
+}
+
+.elsaTitle {
+  text-align: center;
+  font-weight: 700;
+  color: #ec0000;
+}

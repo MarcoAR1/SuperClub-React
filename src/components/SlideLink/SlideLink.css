@@ -1,0 +1,36 @@
+.slideLink {
+  width: 100%;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0.5rem 2rem;
+  border-radius: 1rem;
+}
+
+.slideLinkSelected {
+  background-color: #efefef;
+}
+
+.slideLink:hover {
+  cursor: pointer;
+  background-color: #efefef;
+}
+
+.slideLinkIcon {
+  width: 2.4rem;
+}
+
+.darkSlideLink {
+  color: white;
+}
+
+.darkSlideLinkSelected,
+.darkSlideLink:hover {
+  background-color: #595959;
+}
+
+.darkSlideLinkIcon {
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(207deg)
+    brightness(102%) contrast(102%);
+}
