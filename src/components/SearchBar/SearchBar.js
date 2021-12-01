@@ -1,7 +1,9 @@
 import React from 'react'
+import useDarkMode from '../../hooks/useDarkMode'
 import './SearchBar.css'
 
 const SearchBar = ({ placeholder, handleChangeText, textValue }) => {
+  useDarkMode()
   return (
     <div className="search-bar">
       <input

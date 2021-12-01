@@ -164,6 +164,19 @@ a {
   text-decoration: none;
 }
 
+.html {
+  background-color: #efefef;
+}
+
+.darkHtml {
+  background-color: #222;
+}
+.darkP,
+.darkH2,
+.darkHtml {
+  color: white;
+}
+
 @media (max-width: 1024px) {
   .sideBarOpen {
     animation: slide 0.2s forwards;

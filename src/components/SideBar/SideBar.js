@@ -1,15 +1,18 @@
 import React, { useRef } from 'react'
+import useDarkMode from '../../hooks/useDarkMode'
 import ProfileButton from '../ProfileButton/ProfileButton'
 import SlideLink from '../SlideLink/SlideLink'
+import SwitchMode from '../SwitchMode/SwitchMode'
 import './SideBar.css'
 
 const SideBar = React.forwardRef(({ closeMenu }, ref) => {
   const slideLinks = useRef()
 
   // TODO: Agregar el flag de isDark cuando se haga la US15
-  const isDark = false
+  useDarkMode()
 
-  const handlerAllSlideLinks = (isDark) => {
+  const handlerAllSlideLinks = () => {
+    const isDark = localStorage.getItem('preferedTheme') === 'dark'
     const selected = [...slideLinks.current.children].find(
       (slideLink) =>
         slideLink.classList.contains('slideLinkSelected') ||
@@ -42,7 +45,6 @@ const SideBar = React.forwardRef(({ closeMenu }, ref) => {
             handlerAllSlideLinks={handlerAllSlideLinks}
             link="/"
             image="/assets/home.svg"
-            isDark={isDark}
           >
             Inicio
           </SlideLink>
@@ -50,7 +52,6 @@ const SideBar = React.forwardRef(({ closeMenu }, ref) => {
             handlerAllSlideLinks={handlerAllSlideLinks}
             link="/products"
             image="/assets/package-variant-closed.svg"
-            isDark={isDark}
           >
             Productos
           </SlideLink>
@@ -58,18 +59,23 @@ const SideBar = React.forwardRef(({ closeMenu }, ref) => {
             handlerAllSlideLinks={handlerAllSlideLinks}
             link="/stores"
             image="/assets/store.svg"
-            isDark={isDark}
           >
             Tiendas
           </SlideLink>
         </div>
       </div>
-      <ProfileButton
-        name="Olivia"
-        link="/profile"
-        handlerAllSlideLinks={handlerAllSlideLinks}
-        isDark={isDark}
-      />
+      <div>
+        <div className="switchDarkMode">
+          <SwitchMode />
+          <p>Dark Mode</p>
+        </div>
+        <br />
+        <ProfileButton
+          name="Olivia"
+          link="/profile"
+          handlerAllSlideLinks={handlerAllSlideLinks}
+        />
+      </div>
     </div>
   )
 })

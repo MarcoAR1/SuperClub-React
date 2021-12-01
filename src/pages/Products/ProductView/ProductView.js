@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import MuestraPageProduct from '../../../components/MuestraPageProduct/MuestraPageProduct'
 import Header from '../../../components/Header/Header'
+import useDarkMode from '../../../hooks/useDarkMode'
 
 const storesName = ['amazon', 'apple', 'dell']
 
@@ -12,6 +13,7 @@ const ProductView = ({ handlerMenu }) => {
   const [mensajeError, setMensajeError] = useState('')
   const [product, setProduct] = useState({})
   const insertImgInput = useRef()
+  useDarkMode()
   const { id } = useParams()
 
   const handleSelectStore = (e) => {

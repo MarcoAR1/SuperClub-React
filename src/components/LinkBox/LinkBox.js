@@ -1,8 +1,10 @@
 import React from 'react'
 import './LinkBox.css'
 import { Link } from 'react-router-dom'
+import useDarkMode from '../../hooks/useDarkMode'
 
 const LinkBox = ({ article, urlRef }) => {
+  useDarkMode()
   return (
     <Link className="links-box" to={urlRef + article._id}>
       <article className="article-box">

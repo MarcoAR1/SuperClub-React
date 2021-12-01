@@ -7,6 +7,7 @@ import SearchBar from '../../../components/SearchBar/SearchBar'
 import Button from '../../../components/Button/Button'
 import useFilter from '../../../hooks/useFilter'
 import axiosActual from '../../../utils'
+import useDarkMode from '../../../hooks/useDarkMode'
 
 const ProductsList = ({ handlerMenu }) => {
   const {
@@ -15,7 +16,7 @@ const ProductsList = ({ handlerMenu }) => {
     textValue,
     handleChangeText
   } = useFilter()
-
+  useDarkMode()
   useEffect(() => {
     ;(async function () {
       let { data } = await axiosActual.get('products')

@@ -1,7 +1,9 @@
 import Elsa from '../../components/Elsa/Elsa'
 import Header from '../../components/Header/Header'
+import useDarkMode from '../../hooks/useDarkMode'
 
 const NotFound = ({ handlerMenu }) => {
+  useDarkMode()
   return (
     <>
       <Header handlerMenu={handlerMenu}></Header>

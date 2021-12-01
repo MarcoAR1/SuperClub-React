@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
+import useDarkMode from '../../hooks/useDarkMode'
 import Home from '../../pages/Home/Home'
 import NotFound from '../../pages/NotFound/NotFound'
 import ProductsList from '../../pages/Products/ProductsList/ProductsList'
@@ -9,6 +10,7 @@ import StoreView from '../../pages/Stores/StoreView/StoreView'
 import './MainArea.css'
 
 const MainArea = React.forwardRef(({ handlerMenu }, ref) => {
+  useDarkMode()
   return (
     <div className="mainArea" ref={ref}>
       <Routes>

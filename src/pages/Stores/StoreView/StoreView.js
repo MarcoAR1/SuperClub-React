@@ -1,11 +1,9 @@
 import React from 'react'
+import useDarkMode from '../../../hooks/useDarkMode'
 
 const StoreView = () => {
-    return (
-        <main className="mainAreaContent">
-            
-        </main>
-    )
+  useDarkMode()
+  return <main className="mainAreaContent"></main>
 }
 
 export default StoreView
