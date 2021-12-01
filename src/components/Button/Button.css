@@ -1,18 +1,18 @@
 .btn,
 .profileBtn {
-  font-family: 'Open Sans', sans-serif;
-  width: 30%;
+  width: 13rem;
   height: 3.2rem;
   background: #494f51;
   border-radius: 1.6rem;
   padding: 0.8rem 1.6rem;
-  color: rgba(255, 255, 255, 1);
+  color: white;
   display: flex;
   align-items: center;
   font-size: 1.2rem;
   font-weight: 300;
   transition: background-color 500ms;
   justify-content: center;
+  border: none;
 }
 
 .btn:hover,

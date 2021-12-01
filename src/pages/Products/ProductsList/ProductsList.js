@@ -34,7 +34,7 @@ const ProductsList = ({ handlerMenu }) => {
               textValue={textValue}
               handleChangeText={handleChangeText}
             />
-            <Button>Agregar Producto</Button>
+            <Button to= "/products/new">Agregar Producto</Button>
           </div>
         </>
       </Header>
