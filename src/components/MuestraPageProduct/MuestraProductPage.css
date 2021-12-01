@@ -1,0 +1,45 @@
+.imgMuestraProduct{
+    width: 5rem;
+    height:5rem
+}
+
+.muestraPageProduct{
+    display: flex;
+    
+    
+}
+.muestraTitle{
+    font-size: 2rem;
+    font-weight: bold;
+}
+.containerPuntosProduct{
+    display: flex;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.containerPuntosClub{
+    margin-right: 1rem;
+    align-items: center;
+}
+
+.numberProductPage{
+    display: inline-block;
+    font-weight: bold;
+    font-size: 2.5rem;
+    margin-right: 0.5rem;
+
+}
+
+.puntosProductPage{
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.havannaSL{
+    display: flex;
+    border-radius: 1rem;
+    background-color: grey;
+    align-items: center;
+}
