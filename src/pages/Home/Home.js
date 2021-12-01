@@ -52,7 +52,7 @@ const Home = () => {
               style={{ height: 53, width: 36 }}
               alt="Logo"
             />
-            <p> {stores.length}Tiendas</p>
+            <p> {stores.length} Tiendas</p>
           </div>
           <div className="options">
             <Link to="/stores" style={{ textDecoration: 'none' }}>
