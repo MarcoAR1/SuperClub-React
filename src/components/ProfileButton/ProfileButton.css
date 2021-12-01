@@ -1,0 +1,11 @@
+.profileBtn {
+  padding-left: 0;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.profileImg {
+  width: 3.2rem;
+  height: 3.2rem;
+  padding: 0.4rem;
+}

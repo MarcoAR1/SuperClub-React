@@ -31,6 +31,7 @@ del,
 dfn,
 em,
 img,
+button,
 ins,
 kbd,
 q,
@@ -93,8 +94,28 @@ video {
   vertical-align: baseline;
 }
 html {
+  font-family: 'Open Sans', sans-serif;
   font-size: 10px;
 }
+
+h1,
+h2,
+h3 {
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+h2 {
+  font-size: 3.2rem;
+}
+
+h3 {
+  font-size: 2.4rem;
+}
+
 /* HTML5 display-role reset for older browsers */
 article,
 aside,
@@ -111,6 +132,7 @@ section {
 }
 body {
   line-height: 1;
+  min-height: 100vh;
 }
 ol,
 ul {
@@ -136,14 +158,17 @@ table {
   display: flex;
 }
 
-.sideBarOpen {
-  animation: slide 0.2s forwards;
-  width: 29.6rem;
-  display: block;
-}
+@media (max-width: 1024px) {
+  .sideBarOpen {
+    animation: slide 0.2s forwards;
+    width: 29.6rem;
+    display: flex;
+  }
 
-.sideBarClose {
-  animation: reverse_slide 0.2s;
+  .sideBarClose {
+    animation: reverse_slide 0.2s;
+    display: flex;
+  }
 }
 
 @keyframes slide {

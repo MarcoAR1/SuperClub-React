@@ -1,21 +1,42 @@
 .sideBar {
   width: 29.6rem;
-  height: 100vh;
+  min-height: 100vh;
   overflow-x: hidden;
   transform: translateX(-100%);
   background-color: white;
   display: none;
-  position: absolute;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  z-index: 3;
+  padding: 2rem;
 }
 
 .darkSideBar {
-  background-color: #494f51;
+  background-color: #222;
+}
+
+.logo {
+  width: 24rem;
+}
+
+.slideLinks {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.logoSlideLinksContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 
 @media (min-width: 1025px) {
   .sideBar {
-    position: relative;
+    position: fixed;
     transform: translateX(0);
-    display: block;
+    display: flex;
   }
 }
