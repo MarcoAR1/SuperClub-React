@@ -166,7 +166,7 @@ table {
 
   .sideBarClose {
     animation: reverse_slide 0.2s;
-    display: none;
+    display: flex;
   }
 }
 
