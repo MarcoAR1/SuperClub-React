@@ -1,0 +1,15 @@
+.imgMuestraStore {
+  width: 5rem;
+  height: 5rem;
+}
+
+.muestraPageStore {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.muestraTitle {
+  font-size: 2rem;
+  font-weight: bold;
+}

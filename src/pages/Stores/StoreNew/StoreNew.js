@@ -1,17 +1,14 @@
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router'
-import { Link } from 'react-router-dom'
-import Button from '../../../components/Button/Button'
-import Header from '../../../components/Header/Header'
+import './StoreNew.css'
+import { useState } from 'react'
 import MuestraPageStore from '../../../components/MuestraPageStore/MuestraPageStore'
+import Header from '../../../components/Header/Header'
 import axiosActual from '../../../utils'
-import './StoreView.css'
+import Button from '../../../components/Button/Button'
+import { Link } from 'react-router-dom'
 
-const StoreView = ({ handlerMenu, setStores }) => {
+const StoreNew = ({ handlerMenu, setStores }) => {
   const [currentStore, setCurrentStore] = useState({})
   const [mensajeError, setMensajeError] = useState('')
-  const [store, setStore] = useState({})
-  const { id } = useParams()
 
   const handleName = (e) => {
     const currentValue = e.target.value
@@ -47,10 +44,7 @@ const StoreView = ({ handlerMenu, setStores }) => {
   }
 
   const handleUpdate = async () => {
-    const response = await axiosActual.put(
-      `stores/${currentStore._id}/edit`,
-      currentStore
-    )
+    const response = await axiosActual.post(`stores/new`, currentStore)
     if (response.status === 200)
       setStores((prev) => {
         const copy = [...prev]
@@ -59,38 +53,19 @@ const StoreView = ({ handlerMenu, setStores }) => {
         return copy
       })
   }
-  const handleDelete = async () => {
-    const response = await axiosActual.delete(
-      `sotores/${currentStore._id}/delete`
-    )
-    if (response.status === 200)
-      setStores((prev) => {
-        const copy = [...prev].filter((elem) => elem._id !== currentStore._id)
-        return copy
-      })
-  }
 
   const handleCancel = () => {
-    setCurrentStore(store)
+    setCurrentStore({})
   }
-
-  useEffect(() => {
-    axiosActual.get(`stores/${id}`).then(({ data }) => {
-      setCurrentStore(data)
-      setStore(data)
-    })
-  }, [id])
 
   return (
     <>
       <Header handlerMenu={handlerMenu}>
         <div className="containerIdDelete">
           <p className="productId">
-            <Link to="/stores">Tiendas</Link>{' '}
-            <img src="/assets/chevron-right (1).svg" alt="chevron" /> #
-            {currentStore._id}
+            <Link to="/stores">Tiendas</Link>
+            <img src="/assets/chevron-right (1).svg" alt="chevron" /> Nuevo
           </p>
-          <Button onClick={handleDelete}>Eliminar</Button>
         </div>
       </Header>
       <main className=" mainAreaContent">
@@ -141,4 +116,4 @@ const StoreView = ({ handlerMenu, setStores }) => {
   )
 }
 
-export default StoreView
+export default StoreNew

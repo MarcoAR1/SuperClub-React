@@ -1,3 +1,6 @@
+.mainAreaContent{
+  padding: 0rem 3rem;
+}
 .containerIdDelete {
   display: flex;
   margin-top: 1rem;
@@ -5,11 +8,15 @@
   text-align: center;
   align-items: center;
   justify-content: space-between;
+  width: 100%
 }
 
 .productViewContainer {
   display: flex;
   flex-direction: column;
+  width:100%;
+  padding: 1rem;
+  
 }
 
 .productId {
@@ -53,12 +60,17 @@
   margin-bottom: 1rem;
 }
 .buttonPageProduct {
+  font-size: 1.5rem;
   border-radius: 1rem;
   background-color: white;
   border: none;
   margin: 0.3rem;
 }
 .containerInputPageProductStock {
+  padding: 0rem 0.5rem;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
   background-color: white;
   width: 10rem;
   border-radius: 1rem;
@@ -73,29 +85,44 @@
 }
 
 .inputPageProductArea {
-  width: 70%;
+  width: 60rem;
+  height: 15rem;
   margin-bottom: 0.5rem;
   margin-top: 1rem;
   border-radius: 1rem;
   padding: 0.5rem;
+  resize: none;
+
 }
 .containerNuevaImagenInput {
   display: flex;
   flex-direction: column;
 }
 
+.cartImgProductPage{
+  display: flex;
+  flex-direction: column;
+  
+}
+
+
 .cartProductPage {
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid black;
+  width:70rem;
   border-radius: 1rem;
   margin-bottom: 1rem;
+  justify-content: space-between;
+  padding: 1rem;
+ 
 }
 
 .imgCartPage {
   width: 5rem;
   height: 5rem;
+  border-radius: 1rem;
 }
 
 .textCartProductPage {
@@ -106,15 +133,21 @@
   margin-top: 3rem;
   margin-right: 1rem;
   display: flex;
-  justify-content: flex-end;
-}
-.buttonCancelarPageProduct {
-  padding: 0.5rem;
-  margin-right: 1rem;
-  border-radius: 1.5rem;
+  align-self: flex-end;
+  
 }
 
-.buttonGuardarPageProduct {
-  padding: 0.7rem;
-  border-radius: 1.5rem;
+
+.dark.mainAreaContent{
+ background-color: #222
+
+}
+
+.dark.productViewContainer{
+  color: white;
+}
+
+.dark.inputPageProduct{
+  background-color: grey;
+  border: 1px solid white;
 }

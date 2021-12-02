@@ -2,6 +2,8 @@
   width: 100vw;
   min-height: 100vh;
   background-color: #efefef;
+  display: flex;
+  justify-content: center;
 }
 
 .btnMenu {
