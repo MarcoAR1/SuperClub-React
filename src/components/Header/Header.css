@@ -5,7 +5,9 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 0 2rem;
+  padding: 0 2rem;   
+  position: fixed;
+  z-index: 2;
 }
 
 .darkHeaderMainArea {
