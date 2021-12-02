@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router'
 import useDarkMode from '../../hooks/useDarkMode'
 import './ProfileButton.css'
 
-const ProfileButton = ({ name, link, handlerAllSlideLinks, isDark }) => {
+const ProfileButton = ({ name, link, handlerAllSlideLinks, isDark, img }) => {
   useDarkMode()
   const navigate = useNavigate()
 
@@ -12,10 +12,16 @@ const ProfileButton = ({ name, link, handlerAllSlideLinks, isDark }) => {
   }
 
   return (
-    <div className="profileBtn" onClick={handlerProfileBtn}>
+    <div
+      className="profileBtn"
+      style={{
+        width: '100%'
+      }}
+      onClick={handlerProfileBtn}
+    >
       <img
         className="profileImg"
-        src="/assets/profile-pic.png"
+        src={img || '/assets/profile-pic.png'}
         alt="Imagen de perfil"
       />
       {name}

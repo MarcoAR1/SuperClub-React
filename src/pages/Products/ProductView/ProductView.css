@@ -122,7 +122,8 @@
 .imgCartPage {
   width: 5rem;
   height: 5rem;
-  border-radius: 1rem;
+  border-radius: 0.8rem;
+  background-color: white;
 }
 
 .textCartProductPage {

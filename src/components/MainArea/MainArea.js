@@ -23,6 +23,8 @@ const MainArea = React.forwardRef(({ handlerMenu }, ref) => {
 
   useDarkMode()
   return (
+    <>
+     <div className='headerPlaceHolder' ></div>
     <div className="mainArea" ref={ref}>
       <Routes>
         <Route
@@ -84,6 +86,7 @@ const MainArea = React.forwardRef(({ handlerMenu }, ref) => {
         <Route path="*" element={<NotFound handlerMenu={handlerMenu} />} />
       </Routes>
     </div>
+    </>
   )
 })
 

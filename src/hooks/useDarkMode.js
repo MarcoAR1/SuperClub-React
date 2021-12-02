@@ -29,7 +29,9 @@ const useDarkMode = (switchMode) => {
     const searchBar = $('.search-bar')
     const searchBarInput = $('.search-bar-input')
     const searchBarBtn = $('.search-bar-btn')
+    const elsa = $('.elsaContainer')
 
+    elsa?.classList.add('darkElsaContainer')
     html?.classList.add('darkHtml')
     homeBody?.classList.add('darkHomeBody')
     headerMainArea?.classList.add('darkHeaderMainArea')
@@ -85,7 +87,9 @@ const useDarkMode = (switchMode) => {
     const searchBar = $('.search-bar')
     const searchBarInput = $('.search-bar-input')
     const searchBarBtn = $('.search-bar-btn')
+    const elsa = $('.elsaContainer')
 
+    elsa?.classList.remove('darkElsaContainer')
     html.classList.remove('darkHtml')
     homeBody?.classList.remove('darkHomeBody')
     headerMainArea?.classList.remove('darkHeaderMainArea')

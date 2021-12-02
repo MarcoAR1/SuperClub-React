@@ -42,7 +42,7 @@ const ProductsList = ({ handlerMenu, products }) => {
               title={title}
               container={container}
             />
-            <Button link="/products/new">
+            <Button to="/products/new">
               {width > 1024 ? (
                 'Agregar Producto'
               ) : (

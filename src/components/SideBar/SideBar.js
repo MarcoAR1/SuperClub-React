@@ -63,11 +63,6 @@ const SideBar = React.forwardRef(({ closeMenu }, ref) => {
             Tiendas
           </SlideLink>
         </div>
-        <ProfileButton
-          name="Olivia"
-          link="/profile"
-          handlerAllSlideLinks={handlerAllSlideLinks}
-        />
       </div>
       <div>
         <div className="switchDarkMode">

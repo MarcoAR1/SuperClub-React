@@ -13,6 +13,7 @@
   transition: background-color 500ms;
   justify-content: center;
   border: none;
+  gap: 0.5rem;
 }
 
 .btn:hover,

@@ -1,13 +1,12 @@
 .mainArea {
   width: 100vw;
   min-height: 100vh;
-  background-color: #efefef;
   display: flex;
   justify-content: center;
 }
 
 .btnMenu {
-  background-color: inherit;
+  background-color: transparent;
   border: none;
 }
 
@@ -28,6 +27,10 @@
 .darkMainAreaContent {
   background-color: #222;
 }
+.headerPlaceHolder {
+  height: 7.2rem;
+  display: none;
+}
 
 @media (min-width: 1025px) {
   .mainArea {
@@ -38,7 +41,10 @@
   .btnMenu {
     display: none;
   }
-  .mainAreaContent {
-    position: initial;
+
+  .headerPlaceHolder {
+    height: 7.2rem;
+    display: flex;
+    position: fixed;
   }
 }

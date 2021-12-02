@@ -60,6 +60,7 @@
   border: 0.1rem solid white;
 }
 
+.search-bar-input-dark,
 .search-bar-input-dark::placeholder {
   color: white;
 }

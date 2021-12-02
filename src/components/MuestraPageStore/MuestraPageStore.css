@@ -1,6 +1,8 @@
 .imgMuestraStore {
   width: 5rem;
   height: 5rem;
+  background-color: white;
+  border-radius: 0.8rem;
 }
 
 .muestraPageStore {

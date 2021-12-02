@@ -41,7 +41,7 @@ const StoresList = ({ handlerMenu, stores }) => {
               title={title}
               container={container}
             />
-            <Button link="/stores/new">
+            <Button to="/stores/new">
               {width > 1024 ? (
                 'Agregar Tienda'
               ) : (

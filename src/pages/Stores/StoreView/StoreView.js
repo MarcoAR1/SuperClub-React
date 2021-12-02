@@ -85,11 +85,17 @@ const StoreView = ({ handlerMenu, setStores }) => {
     <>
       <Header handlerMenu={handlerMenu}>
         <div className="containerIdDelete">
-          <p className="productId">
-            <Link to="/stores">Tiendas</Link>{' '}
-            <img src="/assets/chevron-right (1).svg" alt="chevron" /> #
-            {currentStore._id}
-          </p>
+          <div className="productId">
+            <Link to="/stores">
+              <p>Tiendas</p>
+            </Link>
+            <img
+              src="/assets/chevron-right (1).svg"
+              alt="chevron"
+              className="btn-box"
+            />
+            <p>#{currentStore?._id}</p>
+          </div>
           <Button onClick={handleDelete}>Eliminar</Button>
         </div>
       </Header>
@@ -108,7 +114,7 @@ const StoreView = ({ handlerMenu, setStores }) => {
                   type="text"
                   name="name"
                   id="name"
-                  value={currentStore.name ?? ''}
+                  value={currentStore?.name ?? ''}
                 />
                 {mensajeError && <p>{mensajeError}</p>}
               </div>

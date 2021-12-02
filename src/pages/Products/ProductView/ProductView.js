@@ -1,6 +1,6 @@
 import './ProductView.css'
 import { useState, useRef, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import MuestraPageProduct from '../../../components/MuestraPageProduct/MuestraPageProduct'
 import Header from '../../../components/Header/Header'
 import axiosActual from '../../../utils'
@@ -148,10 +148,21 @@ const ProductView = ({ storesName, setProducts }) => {
     <>
       <Header>
         <div className="containerIdDelete">
-          <p className="productId">
-            {' '}
-            Productos {'>'} #{currentProduct._id}
-          </p>
+          <div className="productId">
+            <Link to="/product">
+              <p>Productos</p>
+            </Link>
+            <img
+              src="/assets/chevron-right (1).svg"
+              alt="chevron"
+              className="btn-box"
+            />
+            <p>
+              
+            #{currentProduct._id}
+            </p>
+          </div>
+
           <Button onClick={handleDelete}>Eliminar</Button>
         </div>
       </Header>
