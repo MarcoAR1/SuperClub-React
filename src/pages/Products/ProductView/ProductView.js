@@ -131,12 +131,12 @@ const ProductView = ({ handlerMenu, storesName, setProducts }) => {
     const response = await axiosActual.delete(
       `products/${currentProduct._id}/delete`
     )
-    if (response.status === 200){
+    if (response.status === 200) {
       setProducts((prev) => {
         const copy = [...prev].filter((elem) => elem._id !== currentProduct._id)
         return copy
       })
-      navigate("/products")
+      navigate('/products')
     }
   }
 
@@ -149,7 +149,7 @@ const ProductView = ({ handlerMenu, storesName, setProducts }) => {
 
   return (
     <>
-      <Header handlerMenu={handlerMenu}>
+      <Header handlerMenu={handlerMenu} style={{ width: 'initial' }}>
         <div className="containerIdDelete">
           <div className="productId">
             <Link to="/products">
