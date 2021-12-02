@@ -64,7 +64,6 @@ const ProductView = ({ storesName, setProducts }) => {
   }
 
   const handleRemoveImg = (img) => {
-    console.log(img)
     setCurrentProduct((prev) => {
       const copy = { ...prev }
       copy.gallery = copy.gallery.filter((element) => element !== img)
@@ -97,6 +96,8 @@ const ProductView = ({ storesName, setProducts }) => {
       currentValue &&
       !currentProduct.gallery?.find((element) => element === currentValue)
     ) {
+      insertImgInput.current.value = ''
+
       setCurrentProduct((prev) => {
         const copy = { ...prev }
         copy.gallery = [...copy.gallery, currentValue]
@@ -105,12 +106,11 @@ const ProductView = ({ storesName, setProducts }) => {
     }
   }
 
-  const handleSaveData = async () => {
+  const handleUpdate = async () => {
     const response = await axiosActual.put(
       `products/${currentProduct._id}/edit`,
       currentProduct
     )
-    console.log(response)
     if (response.status === 200)
       setProducts((prev) => {
         const copy = [...prev]
@@ -158,7 +158,7 @@ const ProductView = ({ storesName, setProducts }) => {
           <div className="formPageProduct">
             <MuestraPageProduct product={currentProduct} />
             <p className="tituloProductPage">Información</p>
-            <label className="labelProductPage" for="name">
+            <label className="labelProductPage" htmlFor="name">
               Nombre
             </label>
             <input
@@ -167,11 +167,11 @@ const ProductView = ({ storesName, setProducts }) => {
               type="text"
               name="title"
               id="title"
-              value={currentProduct.title}
+              value={currentProduct.title || ''}
             />
             {mensajeError && <p>{mensajeError}</p>}
 
-            <label className="labelProductPage" for="valor">
+            <label className="labelProductPage" htmlFor="valor">
               Valor
             </label>
             <input
@@ -181,10 +181,10 @@ const ProductView = ({ storesName, setProducts }) => {
               type="number"
               name="price"
               id="price"
-              value={currentProduct.price}
+              value={currentProduct.price || 0}
             />
 
-            <label className="labelProductPage" for="stock">
+            <label className="labelProductPage" htmlFor="stock">
               Stock
             </label>
 
@@ -197,7 +197,7 @@ const ProductView = ({ storesName, setProducts }) => {
                 type="text"
                 name="stock"
                 placeholder="0"
-                value={currentProduct.stock}
+                value={currentProduct.stock || 0}
                 onChange={handleChangeStock}
               />
               <button onClick={handleClickSum} className="buttonPageProduct">
@@ -205,7 +205,7 @@ const ProductView = ({ storesName, setProducts }) => {
               </button>
             </div>
 
-            <label className="labelProductPage" for="description">
+            <label className="labelProductPage" htmlFor="description">
               Descripción
             </label>
             <textarea
@@ -215,7 +215,7 @@ const ProductView = ({ storesName, setProducts }) => {
               value={currentProduct.description}
             />
 
-            <label className="labelProductPage" for="tienda">
+            <label className="labelProductPage" htmlFor="tienda">
               Tienda
             </label>
             <select
@@ -226,7 +226,7 @@ const ProductView = ({ storesName, setProducts }) => {
             >
               <option value="">Selecciona la tienda</option>
               {storesName?.map(({ name, _id }) => (
-                <option name={name} value={_id}>
+                <option key={_id} name={name} value={_id}>
                   {name}
                 </option>
               ))}
@@ -235,7 +235,7 @@ const ProductView = ({ storesName, setProducts }) => {
 
           <p className="tituloProductPage">Galería de Imágenes</p>
           <div className="containerNuevaImagenInput">
-            <label className="labelProductPage" for="imagen">
+            <label className="labelProductPage" htmlFor="imagen">
               Nueva Imagen
             </label>
             <input
@@ -249,21 +249,30 @@ const ProductView = ({ storesName, setProducts }) => {
           <p className="tituloProductPage">Imágenes Actuales</p>
 
           <div className="cartImgProductPage">
-            {currentProduct?.gallery?.map((element) => (
-              <div className="cartProductPage">
+            {currentProduct?.gallery?.map((element, i) => (
+              <div key={i} className="cartProductPage">
                 <img
                   className="imgCartPage"
                   src={element}
                   alt={currentProduct.title}
                 ></img>
-                <p className="textCartProductPage">{element}</p>
+                <p
+                  className="textCartProductPage"
+                  style={{
+                    maxWidth: '95ch',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis'
+                  }}
+                >
+                  {element}
+                </p>
                 <Button onClick={() => handleRemoveImg(element)}>Quitar</Button>
               </div>
             ))}
           </div>
           <div className="buttonsPageProduct">
             <Button onClick={handleCancel}>Cancelar</Button>
-            <Button disabled={Boolean(mensajeError)} onClick={handleSaveData}>
+            <Button disabled={Boolean(mensajeError)} onClick={handleUpdate}>
               Guardar
             </Button>
           </div>

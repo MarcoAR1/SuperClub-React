@@ -1,16 +1,16 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { Link } from 'react-router-dom'
+import Button from '../../../components/Button/Button'
 import Header from '../../../components/Header/Header'
 import MuestraPageStore from '../../../components/MuestraPageStore/MuestraPageStore'
 import axiosActual from '../../../utils'
 import './StoreView.css'
 
-const StoreView = ({ handlerMenu }) => {
+const StoreView = ({ handlerMenu, setStores }) => {
   const [currentStore, setCurrentStore] = useState({})
   const [mensajeError, setMensajeError] = useState('')
   const [store, setStore] = useState({})
-  const insertImgInput = useRef()
   const { id } = useParams()
 
   const handleName = (e) => {
@@ -35,9 +35,9 @@ const StoreView = ({ handlerMenu }) => {
   }
 
   const handleInsertImg = (e) => {
-    const currentStore = insertImgInput.current.value
-
+    const currentStore = e.target.value
     if (e.key === 'Enter' && currentStore && !currentStore.logo) {
+      e.target.value = ''
       setCurrentStore((prev) => {
         const copy = { ...prev }
         copy.logo = currentStore
@@ -46,8 +46,28 @@ const StoreView = ({ handlerMenu }) => {
     }
   }
 
-  const handleSaveData = () => {
-    axiosActual.put(`stores/${currentStore._id}/edit`, currentStore)
+  const handleUpdate = async () => {
+    const response = await axiosActual.put(
+      `stores/${currentStore._id}/edit`,
+      currentStore
+    )
+    if (response.status === 200)
+      setStores((prev) => {
+        const copy = [...prev]
+        const index = copy.findIndex((elem) => elem._id === currentStore._id)
+        if (index !== -1) copy[index] = currentStore
+        return copy
+      })
+  }
+  const handleDelete = async () => {
+    const response = await axiosActual.delete(
+      `sotores/${currentStore._id}/delete`
+    )
+    if (response.status === 200)
+      setStores((prev) => {
+        const copy = [...prev].filter((elem) => elem._id !== currentStore._id)
+        return copy
+      })
   }
 
   const handleCancel = () => {
@@ -65,65 +85,55 @@ const StoreView = ({ handlerMenu }) => {
     <>
       <Header handlerMenu={handlerMenu}>
         <div className="containerIdDelete">
-          <p className="storeId">
-            <Link to="/stores">Tiendas</Link>
-            <img src="/assets/chevron-right (1).svg" alt="Chevron" />#
-            {currentStore?._id}
+          <p className="productId">
+            <Link to="/stores">Tiendas</Link>{' '}
+            <img src="/assets/chevron-right (1).svg" alt="chevron" /> #
+            {currentStore._id}
           </p>
+          <Button onClick={handleDelete}>Eliminar</Button>
         </div>
       </Header>
-      <main className="mainAreaContent">
-        <div className="storeViewContainer">
-          <div className="formPageStore">
-            <MuestraPageStore store={currentStore} />
-            <p className="tituloStorePage">Información</p>
-            <label htmlFor="nombre">Nombre</label>
-            <input
-              onChange={handleName}
-              className="inputPageStore"
-              type="text"
-              name="nombre"
-              id="nombre"
-              value={currentStore.name ?? ''}
-            />
-            {mensajeError && <p>{mensajeError}</p>}
-          </div>
+      <main className=" mainAreaContent">
+        <div className=" productViewContainer">
+          <div className="formPageProduct">
+            <div className="containerStoreViewThings">
+              <MuestraPageStore store={currentStore} />
+              <div className="storeViewNameInput">
+                <label className="labelProductPage" htmlFor="name">
+                  Nombre
+                </label>
+                <input
+                  onChange={handleName}
+                  className=" inputPageProduct"
+                  type="text"
+                  name="name"
+                  id="name"
+                  value={currentStore.name ?? ''}
+                />
+                {mensajeError && <p>{mensajeError}</p>}
+              </div>
 
-          <p className="tituloStorePage">Galeria de Imagenes</p>
-          <div className="containerNuevaImagenInput">
-            <label htmlFor="imagen">Nueva Imagen</label>
-            <input
-              onKeyDown={handleInsertImg}
-              ref={insertImgInput}
-              className="inputPageStore"
-              type="text"
-              name="imagen"
-            ></input>
-          </div>
-          <p className="tituloStorePage">Imagenes actuales</p>
-
-          <div>
-            <div className="cartStorePage">
-              <img
-                className="imgCartPage"
-                src={currentStore?.logo}
-                alt={currentStore?.name}
-              ></img>
-              <p className="textCartStorePage">{currentStore?.logo}</p>
-              <button onClick={handleRemoveImg}>Quitar</button>
+              <div className="cartStorePage">
+                <img
+                  className="imgCartPage"
+                  src={currentStore?.logo || '/assets/store.svg'}
+                  alt={currentStore?.name}
+                  onError={(e) => (e.target.src = '/assets/store.svg')}
+                ></img>
+                <input
+                  placeholder="Cambia tu logo"
+                  onKeyDown={handleInsertImg}
+                />
+                <Button onClick={handleRemoveImg}>Quitar</Button>
+              </div>
             </div>
-          </div>
-          <div className="buttonsPageStore">
-            <button className="buttonCancelarPageStore" onClick={handleCancel}>
-              Cancelar
-            </button>
-            <button
-              disabled={Boolean(mensajeError)}
-              className="buttonGuardarPageStore"
-              onClick={handleSaveData}
-            >
-              Guardar
-            </button>
+
+            <div className="buttonsPageProduct">
+              <Button onClick={handleCancel}>Cancelar</Button>
+              <Button disabled={Boolean(mensajeError)} onClick={handleUpdate}>
+                Guardar
+              </Button>
+            </div>
           </div>
         </div>
       </main>

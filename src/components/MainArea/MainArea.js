@@ -11,37 +11,68 @@ import axiosActual from '../../utils'
 import './MainArea.css'
 
 const MainArea = React.forwardRef(({ handlerMenu }, ref) => {
-
   const [stores, setStores] = useState([])
   const [products, setProducts] = useState([])
 
-  useEffect(
-    () => {
-      axiosActual.get("stores").then(({data})=> {
-        setStores(data)}) 
-        axiosActual.get("products").then(({data})=> { 
-          setProducts(data)}) 
-    }, []
-  )
+  useEffect(() => {
+    axiosActual.get('stores').then(({ data }) => setStores(data))
+    axiosActual.get('products').then(({ data }) => setProducts(data))
+  }, [])
 
   return (
     <div className="mainArea" ref={ref}>
       <Routes>
-        <Route path="/" element={<Home handlerMenu={handlerMenu} />} />
+        <Route
+          path="/"
+          element={
+            <Home
+              handlerMenu={handlerMenu}
+              stores={stores}
+              products={products}
+            />
+          }
+        />
         <Route
           path="/products"
-          element={<ProductsList products={products} handlerMenu={handlerMenu} />}
+          element={
+            <ProductsList products={products} handlerMenu={handlerMenu} />
+          }
         />
         <Route
           path="/products/:id"
-          element={<ProductView products={products} setProducts={setProducts} storesName={stores} handlerMenu={handlerMenu} />}
+          element={
+            <ProductView
+              products={products}
+              setProducts={setProducts}
+              storesName={stores}
+              handlerMenu={handlerMenu}
+            />
+          }
         />
-        <Route path="/products/new" element={<ProductNew setProducts={setProducts} storesName={stores} handlerMenu={handlerMenu}/>}/>
+        <Route
+          path="/products/new"
+          element={
+            <ProductNew
+              setProducts={setProducts}
+              storesName={stores}
+              handlerMenu={handlerMenu}
+            />
+          }
+        />
         <Route
           path="/stores"
-          element={<StoresList stores={stores}  handlerMenu={handlerMenu} />}
+          element={<StoresList stores={stores} handlerMenu={handlerMenu} />}
         />
-        <Route path="/stores/:id" element={<StoreView stores={stores} setStores={setStores} handlerMenu={handlerMenu}/>} />
+        <Route
+          path="/stores/:id"
+          element={
+            <StoreView
+              stores={stores}
+              setStores={setStores}
+              handlerMenu={handlerMenu}
+            />
+          }
+        />
         <Route path="/stores/new" />
         <Route
           path="/profile"
