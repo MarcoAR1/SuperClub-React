@@ -5,6 +5,7 @@ import NotFound from '../../pages/NotFound/NotFound'
 import ProductNew from '../../pages/Products/ProductNew/ProductNew'
 import ProductsList from '../../pages/Products/ProductsList/ProductsList'
 import ProductView from '../../pages/Products/ProductView/ProductView'
+import StoreNew from '../../pages/Stores/StoreNew/StoreNew'
 import StoresList from '../../pages/Stores/StoresList/StoresList'
 import StoreView from '../../pages/Stores/StoreView/StoreView'
 import axiosActual from '../../utils'
@@ -73,7 +74,7 @@ const MainArea = React.forwardRef(({ handlerMenu }, ref) => {
             />
           }
         />
-        <Route path="/stores/new" />
+        <Route path="/stores/new"  element={<StoreNew setStores={setStores} handlerMenu={handlerMenu} />} />
         <Route
           path="/profile"
           element={<NotFound handlerMenu={handlerMenu} />}
