@@ -1,6 +1,71 @@
+.containerIdDelete {
+  display: flex;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .storeId {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.5rem;
+}
+
+.storeViewContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.formPageStore {
+  display: flex;
+  flex-direction: column;
+}
+
+.tituloStorePage {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.containerNuevaImagenInput {
+  display: flex;
+  flex-direction: column;
+}
+
+.cartStorePage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+
+.imgCartPage {
+  width: 5rem;
+  height: 5rem;
+}
+
+.textCartProductPage {
+  padding: 0rem 3rem;
+}
+
+.buttonsPageStore {
+  margin-top: 3rem;
+  margin-right: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.buttonCancelarPageStore {
+  padding: 0.5rem;
+  margin-right: 1rem;
+  border-radius: 1.5rem;
+}
+
+.buttonGuardarPageStore {
+  padding: 0.7rem;
+  border-radius: 1.5rem;
 }

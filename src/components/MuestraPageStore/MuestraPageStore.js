@@ -10,7 +10,7 @@ const MuestraPageStore = ({ store }) => {
         alt={store?.title}
       ></img>
       <div>
-        <p className="muestraTitle">{store?.title}</p>
+        <p className="muestraTitle">{store?.name}</p>
       </div>
     </div>
   )

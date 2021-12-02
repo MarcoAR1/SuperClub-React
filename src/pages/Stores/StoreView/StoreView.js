@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router'
+import { Link } from 'react-router-dom'
 import Header from '../../../components/Header/Header'
 import MuestraPageStore from '../../../components/MuestraPageStore/MuestraPageStore'
 import axiosActual from '../../../utils'
@@ -57,16 +58,15 @@ const StoreView = ({ handlerMenu }) => {
     axiosActual.get(`stores/${id}`).then(({ data }) => {
       setCurrentStore(data)
       setStore(data)
-      console.log(data)
     })
   }, [id])
 
   return (
-    <div>
+    <>
       <Header handlerMenu={handlerMenu}>
         <div className="containerIdDelete">
           <p className="storeId">
-            Tiendas
+            <Link to="/stores">Tiendas</Link>
             <img src="/assets/chevron-right (1).svg" alt="Chevron" />#
             {currentStore?._id}
           </p>
@@ -75,7 +75,7 @@ const StoreView = ({ handlerMenu }) => {
       <main className="mainAreaContent">
         <div className="storeViewContainer">
           <div className="formPageStore">
-            <MuestraPageStore product={currentStore} />
+            <MuestraPageStore store={currentStore} />
             <p className="tituloStorePage">Información</p>
             <label htmlFor="nombre">Nombre</label>
             <input
@@ -102,7 +102,7 @@ const StoreView = ({ handlerMenu }) => {
           </div>
           <p className="tituloStorePage">Imagenes actuales</p>
 
-          <div className="cartImgStorePage">
+          <div>
             <div className="cartStorePage">
               <img
                 className="imgCartPage"
@@ -127,7 +127,7 @@ const StoreView = ({ handlerMenu }) => {
           </div>
         </div>
       </main>
-    </div>
+    </>
   )
 }
 

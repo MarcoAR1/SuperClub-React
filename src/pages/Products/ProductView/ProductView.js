@@ -131,7 +131,7 @@ const ProductView = ({ handlerMenu }) => {
   }, [id])
 
   return (
-    <div>
+    <>
       <Header handlerMenu={handlerMenu}>
         <>
           <div className="containerIdDelete">
@@ -257,7 +257,7 @@ const ProductView = ({ handlerMenu }) => {
           </div>
         </div>
       </main>
-    </div>
+    </>
   )
 }
 
