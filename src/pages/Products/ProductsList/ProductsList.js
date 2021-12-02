@@ -6,22 +6,18 @@ import Header from '../../../components/Header/Header'
 import SearchBar from '../../../components/SearchBar/SearchBar'
 import Button from '../../../components/Button/Button'
 import useFilter from '../../../hooks/useFilter'
-import axiosActual from '../../../utils'
 
-const ProductsList = ({ handlerMenu }) => {
+const ProductsList = ({ handlerMenu, products }) => {
   const {
     handlerSetInitialElement,
-    element: products,
+    element: productsFilters,
     textValue,
     handleChangeText
   } = useFilter()
 
   useEffect(() => {
-    ;(async function () {
-      let { data } = await axiosActual.get('products')
-      setTimeout(() => handlerSetInitialElement(data), 200)
-    })()
-  }, [handlerSetInitialElement])
+   handlerSetInitialElement(products)
+  }, [handlerSetInitialElement, products])
 
   return (
     <>
@@ -39,9 +35,10 @@ const ProductsList = ({ handlerMenu }) => {
         </>
       </Header>
       <main className="mainAreaContent">
-        {products.length ? (
+        {productsFilters?.length ? (
           <section className="section-products">
-            {products.map((product, i) => (
+            
+            {productsFilters?.map((product, i) => (
               <LinkBox key={i} article={product} urlRef="/products/" />
             ))}
           </section>

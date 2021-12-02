@@ -1,18 +1,24 @@
-import './ProductView.css'
-import { useState, useRef , useEffect} from 'react'
-import { useParams } from 'react-router-dom'
+import './ProductNew.css'
+import { useState, useRef } from 'react'
 import MuestraPageProduct from '../../../components/MuestraPageProduct/MuestraPageProduct'
 import Header from "../../../components/Header/Header"
 import axiosActual from '../../../utils'
 import Button from '../../../components/Button/Button'
 
 
-const ProductView = ({storesName, setProducts}) => {
-  const [currentProduct, setCurrentProduct] = useState({})
+const ProductNew = ({storesName, setProducts}) => {
+  const [currentProduct, setCurrentProduct] = useState({stock:0, price:0, gallery:[]})
   const [mensajeError, setMensajeError] = useState("")
-  const [product, setProduct] = useState({})
   const insertImgInput = useRef()
-  const {id} = useParams()
+
+
+  const handleNewImg = (e) => {
+    setCurrentProduct((prev) => {
+        const copy = { ...prev }
+        copy.image = e.target.value
+        return copy
+      })
+  }
 
   const handleSelectStore = (e) => {
     setCurrentProduct((prev) => {
@@ -38,8 +44,8 @@ const ProductView = ({storesName, setProducts}) => {
   const handlePrice = (e) => {
     setCurrentProduct((prev) => {
       const copy = { ...prev }
-      e.target.value = e.target.value.match(/\D/)? copy.price : ((e.target.value && Number(e.target.value)) || 0)
-      copy.price = e.target.value
+      e.target.value= e.target.value.match(/\D/)? copy.price : ((e.target.value && Number(e.target.value)) || 0)
+      copy.price =  e.target.value
       return copy
     })
   }
@@ -92,7 +98,7 @@ const ProductView = ({storesName, setProducts}) => {
     if (
       e.key === 'Enter' &&
       currentValue &&
-      !currentProduct.gallery?.find((element) => element === currentValue)
+      !currentProduct?.gallery?.find((element) => element === currentValue)
     ) {
       setCurrentProduct((prev) => {
         const copy = { ...prev }
@@ -103,55 +109,37 @@ const ProductView = ({storesName, setProducts}) => {
   }
 
   const handleSaveData = async () => {
-    const response = await axiosActual.put(
-      `products/${currentProduct._id}/edit`,
+    const response = await axiosActual.post(
+      `products/new`,
       currentProduct
     )
     console.log(response)
     if(response.status === 200) setProducts(
-      prev => {const copy = [...prev]
-        const index = copy.findIndex(elem => elem._id === currentProduct._id)
-        if ( index !== -1) copy[index] = currentProduct;
-        return copy
+      prev => {const copy = [...prev, JSON.parse(response.data)]
+      return copy
     }
     )
   }
 
-  const handleCancel = () => {
-    setCurrentProduct(product)
+  const handleReset = () => {
+    setCurrentProduct({stock:0, price:0, gallery:[]})
   }
 
-  const handleDelete = async  () => {
-    const response = await axiosActual.delete(
-      `products/${currentProduct._id}/delete`
-    )
-    if(response.status === 200) setProducts(
-      prev => {const copy = [...prev].filter(elem => elem._id !== currentProduct._id)
-        return copy
-    }
-    )
-  }
 
-  useEffect(() => {
-    axiosActual.get(
-        `products/${id}`
-    ).then(({data}) =>{ 
-        setCurrentProduct(data)
-        setProduct(data)}) 
-  }, [id])
 
   return (
     <>
       <Header>
         <div className = "containerIdDelete">
-            <p className="productId"> Productos {">"} #{currentProduct._id}</p>
-            <Button onClick={handleDelete}>Eliminar</Button>
+            <p className="productId"> Productos {">"} Nuevo</p>
         </div>
       </Header>
       <main className=" mainAreaContent">
         <div className=" productViewContainer">
           <div className="formPageProduct">
             <MuestraPageProduct product={currentProduct} />
+            <input className="inputNewProduct" type="text" placeholder="ingrese una imagen" value={currentProduct.image} onChange={handleNewImg}></input>
+            <img className="imgNewProduct" src={currentProduct.image} alt={currentProduct.title}></img>
             <p className="tituloProductPage">Información</p>
             <label className="labelProductPage"  for="name">Nombre</label>
             <input
@@ -244,9 +232,9 @@ const ProductView = ({storesName, setProducts}) => {
           </div>
           <div className="buttonsPageProduct">
             <Button
-              onClick={handleCancel}
+              onClick={handleReset}
             >
-              Cancelar
+              Resetear
             </Button>
             <Button
               disabled={Boolean(mensajeError)}
@@ -261,4 +249,5 @@ const ProductView = ({storesName, setProducts}) => {
   )
 }
 
-export default ProductView
+export default ProductNew;
+
