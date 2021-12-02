@@ -6,13 +6,12 @@ import Header from '../../../components/Header/Header'
 import SearchBar from '../../../components/SearchBar/SearchBar'
 import Button from '../../../components/Button/Button'
 import useFilter from '../../../hooks/useFilter'
-import axiosActual from '../../../utils'
 import useWindowSize from '../../../hooks/useResize'
 
-const StoresList = ({ handlerMenu }) => {
+const StoresList = ({ handlerMenu, stores }) => {
   const {
     handlerSetInitialElement,
-    element: stores,
+    element: storesFilters,
     textValue,
     handleChangeText
   } = useFilter()
@@ -22,11 +21,8 @@ const StoresList = ({ handlerMenu }) => {
   const container = useRef()
 
   useEffect(() => {
-    ;(async function () {
-      let { data } = await axiosActual.get('stores')
-      setTimeout(() => handlerSetInitialElement(data), 200)
-    })()
-  }, [handlerSetInitialElement])
+    handlerSetInitialElement(stores)
+  }, [handlerSetInitialElement, stores])
 
   return (
     <>
@@ -54,9 +50,9 @@ const StoresList = ({ handlerMenu }) => {
         </>
       </Header>
       <main className="mainAreaContent">
-        {stores.length ? (
+        {storesFilters?.length ? (
           <section className="section-stores">
-            {stores.map((store, i) => (
+            {storesFilters?.map((store, i) => (
               <LinkBox key={i} article={store} urlRef="/stores/" />
             ))}
           </section>

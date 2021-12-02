@@ -1,8 +1,6 @@
-.containerProduct{
+.mainAreaContent{
   padding: 0rem 3rem;
-  width: calc(100vw - 29.6rem);
 }
-
 .containerIdDelete {
   display: flex;
   margin-top: 1rem;
