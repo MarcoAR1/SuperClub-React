@@ -6,7 +6,7 @@ import axiosActual from '../../../utils'
 import Button from '../../../components/Button/Button'
 import { Link, useNavigate } from 'react-router-dom'
 
-const ProductNew = ({ storesName, setProducts }) => {
+const ProductNew = ({ handlerMenu, storesName, setProducts }) => {
   const [currentProduct, setCurrentProduct] = useState({
     stock: 0,
     price: 0,
@@ -134,7 +134,7 @@ const ProductNew = ({ storesName, setProducts }) => {
 
   return (
     <>
-      <Header>
+      <Header handlerMenu={handlerMenu} style={{ width: 'initial' }}>
         <div className="containerIdDelete">
           <div className="productId">
             <Link to="/products">
