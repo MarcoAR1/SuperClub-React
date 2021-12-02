@@ -23,6 +23,6 @@
 
 @media (max-width: 1024px) {
   .btn {
-    width: 0;
+    width: initial;
   }
 }

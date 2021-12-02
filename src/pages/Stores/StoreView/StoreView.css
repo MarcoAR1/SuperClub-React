@@ -5,10 +5,10 @@
   display: flex;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  gap: 1rem;
   text-align: center;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
 }
 
 .productViewContainer {
@@ -62,7 +62,6 @@
   flex-direction: column;
   gap: 4rem;
 }
-
 
 .cartStorePage input {
   border-radius: 2rem;

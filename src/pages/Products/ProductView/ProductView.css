@@ -1,22 +1,22 @@
-.mainAreaContent{
+.mainAreaContent {
   padding: 0rem 3rem;
 }
+
 .containerIdDelete {
   display: flex;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  gap: 1rem;
   text-align: center;
   align-items: center;
   justify-content: space-between;
-  width: 100%
 }
 
 .productViewContainer {
   display: flex;
   flex-direction: column;
-  width:100%;
+  width: 100%;
   padding: 1rem;
-  
 }
 
 .productId {
@@ -92,31 +92,27 @@
   border-radius: 1rem;
   padding: 0.5rem;
   resize: none;
-
 }
 .containerNuevaImagenInput {
   display: flex;
   flex-direction: column;
 }
 
-.cartImgProductPage{
+.cartImgProductPage {
   display: flex;
   flex-direction: column;
-  
 }
-
 
 .cartProductPage {
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid black;
-  width:70rem;
+  width: 70rem;
   border-radius: 1rem;
   margin-bottom: 1rem;
   justify-content: space-between;
   padding: 1rem;
- 
 }
 
 .imgCartPage {
@@ -135,20 +131,17 @@
   margin-right: 1rem;
   display: flex;
   align-self: flex-end;
-  
 }
 
-
-.dark.mainAreaContent{
- background-color: #222
-
+.dark.mainAreaContent {
+  background-color: #222;
 }
 
-.dark.productViewContainer{
+.dark.productViewContainer {
   color: white;
 }
 
-.dark.inputPageProduct{
+.dark.inputPageProduct {
   background-color: grey;
   border: 1px solid white;
 }

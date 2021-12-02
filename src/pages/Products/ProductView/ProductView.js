@@ -7,7 +7,7 @@ import axiosActual from '../../../utils'
 import Button from '../../../components/Button/Button'
 import useDarkMode from '../../../hooks/useDarkMode'
 
-const ProductView = ({ storesName, setProducts }) => {
+const ProductView = ({ handlerMenu, storesName, setProducts }) => {
   const [currentProduct, setCurrentProduct] = useState({})
   const [mensajeError, setMensajeError] = useState('')
   const [product, setProduct] = useState({})
@@ -146,7 +146,7 @@ const ProductView = ({ storesName, setProducts }) => {
 
   return (
     <>
-      <Header>
+      <Header handlerMenu={handlerMenu}>
         <div className="containerIdDelete">
           <div className="productId">
             <Link to="/products">
@@ -157,9 +157,7 @@ const ProductView = ({ storesName, setProducts }) => {
               alt="chevron"
               className="btn-box"
             />
-            <p>
-            #{currentProduct._id}
-            </p>
+            <p>#{currentProduct._id}</p>
           </div>
 
           <Button onClick={handleDelete}>Eliminar</Button>
