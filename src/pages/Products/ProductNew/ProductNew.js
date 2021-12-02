@@ -4,7 +4,7 @@ import MuestraPageProduct from '../../../components/MuestraPageProduct/MuestraPa
 import Header from '../../../components/Header/Header'
 import axiosActual from '../../../utils'
 import Button from '../../../components/Button/Button'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const ProductNew = ({ storesName, setProducts }) => {
   const [currentProduct, setCurrentProduct] = useState({
@@ -14,6 +14,7 @@ const ProductNew = ({ storesName, setProducts }) => {
   })
   const [mensajeError, setMensajeError] = useState('')
   const insertImgInput = useRef()
+  const navigate = useNavigate()
 
   const handleNewImg = (e) => {
     setCurrentProduct((prev) => {
@@ -118,11 +119,13 @@ const ProductNew = ({ storesName, setProducts }) => {
   const handleSaveData = async () => {
     const response = await axiosActual.post(`products/new`, currentProduct)
     console.log(response)
-    if (response.status === 200)
+    if (response.status === 200) {
       setProducts((prev) => {
         const copy = [...prev, JSON.parse(response.data)]
         return copy
       })
+      navigate('/prducts')
+    }
   }
 
   const handleReset = () => {

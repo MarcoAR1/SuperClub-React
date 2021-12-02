@@ -4,11 +4,12 @@ import MuestraPageStore from '../../../components/MuestraPageStore/MuestraPageSt
 import Header from '../../../components/Header/Header'
 import axiosActual from '../../../utils'
 import Button from '../../../components/Button/Button'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const StoreNew = ({ handlerMenu, setStores }) => {
   const [currentStore, setCurrentStore] = useState({})
   const [mensajeError, setMensajeError] = useState('')
+  const navigate = useNavigate()
 
   const handleName = (e) => {
     const currentValue = e.target.value
@@ -43,15 +44,15 @@ const StoreNew = ({ handlerMenu, setStores }) => {
     }
   }
 
-  const handleUpdate = async () => {
+  const handleSave = async () => {
     const response = await axiosActual.post(`stores/new`, currentStore)
-    if (response.status === 200)
+    if (response.status === 200) {
       setStores((prev) => {
-        const copy = [...prev]
-        const index = copy.findIndex((elem) => elem._id === currentStore._id)
-        if (index !== -1) copy[index] = currentStore
+        const copy = [...prev, currentStore]
         return copy
       })
+      navigate('/stores')
+    }
   }
 
   const handleCancel = () => {
@@ -112,7 +113,7 @@ const StoreNew = ({ handlerMenu, setStores }) => {
 
             <div className="buttonsPageProduct">
               <Button onClick={handleCancel}>Cancelar</Button>
-              <Button disabled={Boolean(mensajeError)} onClick={handleUpdate}>
+              <Button disabled={Boolean(mensajeError)} onClick={handleSave}>
                 Guardar
               </Button>
             </div>

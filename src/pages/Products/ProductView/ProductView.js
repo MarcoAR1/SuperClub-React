@@ -1,6 +1,6 @@
 import './ProductView.css'
 import { useState, useRef, useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import MuestraPageProduct from '../../../components/MuestraPageProduct/MuestraPageProduct'
 import Header from '../../../components/Header/Header'
 import axiosActual from '../../../utils'
@@ -11,6 +11,7 @@ const ProductView = ({ handlerMenu, storesName, setProducts }) => {
   const [currentProduct, setCurrentProduct] = useState({})
   const [mensajeError, setMensajeError] = useState('')
   const [product, setProduct] = useState({})
+  const navigate = useNavigate()
   const insertImgInput = useRef()
   useDarkMode()
   const { id } = useParams()
@@ -130,11 +131,13 @@ const ProductView = ({ handlerMenu, storesName, setProducts }) => {
     const response = await axiosActual.delete(
       `products/${currentProduct._id}/delete`
     )
-    if (response.status === 200)
+    if (response.status === 200){
       setProducts((prev) => {
         const copy = [...prev].filter((elem) => elem._id !== currentProduct._id)
         return copy
       })
+      navigate("/products")
+    }
   }
 
   useEffect(() => {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 import Button from '../../../components/Button/Button'
 import Header from '../../../components/Header/Header'
 import MuestraPageStore from '../../../components/MuestraPageStore/MuestraPageStore'
@@ -11,6 +11,7 @@ const StoreView = ({ handlerMenu, setStores }) => {
   const [currentStore, setCurrentStore] = useState({})
   const [mensajeError, setMensajeError] = useState('')
   const [store, setStore] = useState({})
+  const navigate = useNavigate()
   const { id } = useParams()
 
   const handleName = (e) => {
@@ -63,11 +64,13 @@ const StoreView = ({ handlerMenu, setStores }) => {
     const response = await axiosActual.delete(
       `sotores/${currentStore._id}/delete`
     )
-    if (response.status === 200)
+    if (response.status === 200){
       setStores((prev) => {
         const copy = [...prev].filter((elem) => elem._id !== currentStore._id)
         return copy
       })
+      navigate("/stores")
+    }
   }
 
   const handleCancel = () => {

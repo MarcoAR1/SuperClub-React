@@ -8,6 +8,7 @@
 .btnMenu {
   background-color: transparent;
   border: none;
+  z-index: 3;
 }
 
 .darkBtnMenu {
