@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
-import { Link,useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Button from '../../../components/Button/Button'
 import Header from '../../../components/Header/Header'
 import MuestraPageStore from '../../../components/MuestraPageStore/MuestraPageStore'
@@ -64,12 +64,12 @@ const StoreView = ({ handlerMenu, setStores }) => {
     const response = await axiosActual.delete(
       `sotores/${currentStore._id}/delete`
     )
-    if (response.status === 200){
+    if (response.status === 200) {
       setStores((prev) => {
         const copy = [...prev].filter((elem) => elem._id !== currentStore._id)
         return copy
       })
-      navigate("/stores")
+      navigate('/stores')
     }
   }
 
@@ -99,7 +99,6 @@ const StoreView = ({ handlerMenu, setStores }) => {
             />
             <p>#{currentStore?._id}</p>
           </div>
-          <Button onClick={handleDelete}>Eliminar</Button>
         </div>
       </Header>
       <main className=" mainAreaContent">

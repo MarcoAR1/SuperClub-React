@@ -118,13 +118,13 @@ const ProductNew = ({ handlerMenu, storesName, setProducts }) => {
 
   const handleSaveData = async () => {
     const response = await axiosActual.post(`products/new`, currentProduct)
-    console.log(response)
+    if (!currentProduct.title) return
     if (response.status === 200) {
       setProducts((prev) => {
-        const copy = [...prev, JSON.parse(response.data)]
+        const copy = [...prev, JSON.parse(response?.data)]
         return copy
       })
-      navigate('/prducts')
+      navigate('/products')
     }
   }
 

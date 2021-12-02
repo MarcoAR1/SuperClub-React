@@ -46,11 +46,13 @@ const StoreNew = ({ handlerMenu, setStores }) => {
 
   const handleSave = async () => {
     const response = await axiosActual.post(`stores/new`, currentStore)
+    if (!currentStore.name) return
     if (response.status === 200) {
       setStores((prev) => {
-        const copy = [...prev, currentStore]
+        const copy = [...prev, response.data]
         return copy
       })
+      console.log(response)
       navigate('/stores')
     }
   }
