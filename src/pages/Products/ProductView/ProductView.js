@@ -5,12 +5,14 @@ import MuestraPageProduct from '../../../components/MuestraPageProduct/MuestraPa
 import Header from '../../../components/Header/Header'
 import axiosActual from '../../../utils'
 import Button from '../../../components/Button/Button'
+import useDarkMode from '../../../hooks/useDarkMode'
 
 const ProductView = ({ storesName, setProducts }) => {
   const [currentProduct, setCurrentProduct] = useState({})
   const [mensajeError, setMensajeError] = useState('')
   const [product, setProduct] = useState({})
   const insertImgInput = useRef()
+  useDarkMode()
   const { id } = useParams()
 
   const handleSelectStore = (e) => {

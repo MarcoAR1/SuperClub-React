@@ -1,9 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import useDarkMode from '../../hooks/useDarkMode'
 import "./MuestraProductPage.css"
 
 
 const MuestraPageProduct = ({ product }) => {
+  useDarkMode()
   return (
     <div className="muestraPageProduct">
         <img className="imgMuestraProduct" src={product.image} alt={product.title}></img>

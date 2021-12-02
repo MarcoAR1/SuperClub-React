@@ -7,6 +7,7 @@ import SearchBar from '../../../components/SearchBar/SearchBar'
 import Button from '../../../components/Button/Button'
 import useFilter from '../../../hooks/useFilter'
 import useWindowSize from '../../../hooks/useResize'
+import useDarkMode from '../../../hooks/useDarkMode'
 
 const ProductsList = ({ handlerMenu, products }) => {
   const {
@@ -21,6 +22,7 @@ const ProductsList = ({ handlerMenu, products }) => {
   const title = useRef()
   const container = useRef()
 
+  useDarkMode()
   useEffect(() => {
     handlerSetInitialElement(products)
   }, [handlerSetInitialElement, products])

@@ -1,21 +1,26 @@
-import { useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useEffect, useRef } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
+import useDarkMode from '../../hooks/useDarkMode'
 import './SlideLink.css'
 
 const SlideLink = ({ image, handlerAllSlideLinks, link, isDark, children }) => {
-  window.addEventListener('load', () => {
+  const slideLink = useRef()
+  const navigate = useNavigate()
+  useDarkMode()
+
+  const { pathName } = useLocation()
+  useEffect(() => {
+    const isDark = localStorage.getItem('preferedTheme') === 'dark'
     const location = window.location.pathname
     if (location === link)
       slideLink.current?.classList.add(
         isDark ? 'darkSlideLinkSelected' : 'slideLinkSelected'
       )
-  })
-
-  const slideLink = useRef()
-  const navigate = useNavigate()
-
+    // eslint-disable-next-line
+  }, [pathName])
   const handlerSlideLink = () => {
-    handlerAllSlideLinks(isDark)
+    const isDark = localStorage.getItem('preferedTheme') === 'dark'
+    handlerAllSlideLinks()
     slideLink.current.classList.add(
       isDark ? 'darkSlideLinkSelected' : 'slideLinkSelected'
     )

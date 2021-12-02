@@ -16,7 +16,16 @@
     brightness(102%) contrast(102%);
 }
 
-.darkMainArea {
+.mainAreaContent {
+  height: calc(100vh - 7.2rem);
+  background-color: #efefef;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  justify-content: center;
+}
+.darkMainAreaContent {
   background-color: #222;
 }
 
@@ -32,14 +41,4 @@
   .mainAreaContent {
     position: initial;
   }
-}
-
-.mainAreaContent {
-  height: calc(100vh - 7.2rem);
-  background-color: #efefef;
-  display: flex;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  justify-content: center;
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
+import useDarkMode from '../../hooks/useDarkMode'
 import Home from '../../pages/Home/Home'
 import NotFound from '../../pages/NotFound/NotFound'
 import ProductNew from '../../pages/Products/ProductNew/ProductNew'
@@ -20,6 +21,7 @@ const MainArea = React.forwardRef(({ handlerMenu }, ref) => {
     axiosActual.get('products').then(({ data }) => setProducts(data))
   }, [])
 
+  useDarkMode()
   return (
     <div className="mainArea" ref={ref}>
       <Routes>

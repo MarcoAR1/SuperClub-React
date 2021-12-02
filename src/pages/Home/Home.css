@@ -4,6 +4,9 @@
   margin-right: 10px;
   width: 100%;
 }
+.darkHomeBody {
+  background-color: #222;
+}
 
 .hiUsername {
   color: #222;

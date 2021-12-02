@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Header from '../../components/Header/Header'
 import Loader from '../../components/Loader/Loader'
+import useDarkMode from '../../hooks/useDarkMode'
 import './Home.css'
 
 const Home = ({ handlerMenu, stores, products }) => {
   const [isLoading, setIsLoading] = useState(true)
+  useDarkMode()
 
   useEffect(() => {
     setIsLoading(!stores.length)

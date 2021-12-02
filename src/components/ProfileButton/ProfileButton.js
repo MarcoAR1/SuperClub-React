@@ -1,7 +1,9 @@
 import { useNavigate } from 'react-router'
+import useDarkMode from '../../hooks/useDarkMode'
 import './ProfileButton.css'
 
 const ProfileButton = ({ name, link, handlerAllSlideLinks, isDark }) => {
+  useDarkMode()
   const navigate = useNavigate()
 
   const handlerProfileBtn = () => {

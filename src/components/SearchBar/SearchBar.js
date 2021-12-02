@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'
+import useDarkMode from '../../hooks/useDarkMode'
 import './SearchBar.css'
 
 const SearchBar = ({
@@ -10,6 +11,7 @@ const SearchBar = ({
 }) => {
   let flag = false
   const searchBar = useRef()
+  useDarkMode()
   const handleHideTitle = () => {
     if (window.innerWidth < 1025) {
       title.current.style.display = 'none'
