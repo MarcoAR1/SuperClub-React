@@ -149,7 +149,7 @@ const ProductView = ({ handlerMenu, storesName, setProducts }) => {
 
   return (
     <>
-      <Header handlerMenu={handlerMenu} style={{ width: 'initial' }}>
+      <Header handlerMenu={handlerMenu} >
         <div className="containerIdDelete">
           <div className="productId">
             <Link to="/products">
