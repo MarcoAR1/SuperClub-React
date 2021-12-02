@@ -21,8 +21,10 @@ const SearchBar = ({
   }
 
   const handleFlag = () => {
-    flag = true
-    searchBar.current.style.width = '100%'
+    if (window.innerWidth < 1025) {
+      flag = true
+      searchBar.current.style.width = '100%'
+    }
   }
 
   const handleShowTitle = () => {
