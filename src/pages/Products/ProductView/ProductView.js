@@ -149,7 +149,7 @@ const ProductView = ({ storesName, setProducts }) => {
       <Header>
         <div className="containerIdDelete">
           <div className="productId">
-            <Link to="/product">
+            <Link to="/products">
               <p>Productos</p>
             </Link>
             <img
@@ -158,7 +158,6 @@ const ProductView = ({ storesName, setProducts }) => {
               className="btn-box"
             />
             <p>
-              
             #{currentProduct._id}
             </p>
           </div>

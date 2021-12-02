@@ -62,10 +62,17 @@ const StoreNew = ({ handlerMenu, setStores }) => {
     <>
       <Header handlerMenu={handlerMenu}>
         <div className="containerIdDelete">
-          <p className="productId">
-            <Link to="/stores">Tiendas</Link>
-            <img src="/assets/chevron-right (1).svg" alt="chevron" /> Nuevo
-          </p>
+          <div className="productId">
+            <Link to="/stores">
+              <p>Tiendas </p>
+            </Link>
+            <img
+              src="/assets/chevron-right (1).svg"
+              alt="chevron"
+              className="btn-box"
+            />
+            <p>Nuevo</p>
+          </div>
         </div>
       </Header>
       <main className=" mainAreaContent">

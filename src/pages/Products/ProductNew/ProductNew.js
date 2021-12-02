@@ -1,23 +1,26 @@
 import './ProductNew.css'
 import { useState, useRef } from 'react'
 import MuestraPageProduct from '../../../components/MuestraPageProduct/MuestraPageProduct'
-import Header from "../../../components/Header/Header"
+import Header from '../../../components/Header/Header'
 import axiosActual from '../../../utils'
 import Button from '../../../components/Button/Button'
+import { Link } from 'react-router-dom'
 
-
-const ProductNew = ({storesName, setProducts}) => {
-  const [currentProduct, setCurrentProduct] = useState({stock:0, price:0, gallery:[]})
-  const [mensajeError, setMensajeError] = useState("")
+const ProductNew = ({ storesName, setProducts }) => {
+  const [currentProduct, setCurrentProduct] = useState({
+    stock: 0,
+    price: 0,
+    gallery: []
+  })
+  const [mensajeError, setMensajeError] = useState('')
   const insertImgInput = useRef()
-
 
   const handleNewImg = (e) => {
     setCurrentProduct((prev) => {
-        const copy = { ...prev }
-        copy.image = e.target.value
-        return copy
-      })
+      const copy = { ...prev }
+      copy.image = e.target.value
+      return copy
+    })
   }
 
   const handleSelectStore = (e) => {
@@ -30,22 +33,24 @@ const ProductNew = ({storesName, setProducts}) => {
 
   const handleTitle = (e) => {
     const currentValue = e.target.value
-    
-      setCurrentProduct((prev) => {
-        const copy = { ...prev }
-        copy.title = currentValue
-        return copy
-      })
 
-      if (!currentValue) setMensajeError("Debe ingresar un producto")
-      else setMensajeError("")
+    setCurrentProduct((prev) => {
+      const copy = { ...prev }
+      copy.title = currentValue
+      return copy
+    })
+
+    if (!currentValue) setMensajeError('Debe ingresar un producto')
+    else setMensajeError('')
   }
 
   const handlePrice = (e) => {
     setCurrentProduct((prev) => {
       const copy = { ...prev }
-      e.target.value= e.target.value.match(/\D/)? copy.price : ((e.target.value && Number(e.target.value)) || 0)
-      copy.price =  e.target.value
+      e.target.value = e.target.value.match(/\D/)
+        ? copy.price
+        : (e.target.value && Number(e.target.value)) || 0
+      copy.price = e.target.value
       return copy
     })
   }
@@ -60,10 +65,12 @@ const ProductNew = ({storesName, setProducts}) => {
 
   const handleChangeStock = (e) => {
     setCurrentProduct((prev) => {
-        const copy = { ...prev }
-        copy.stock = e.target.value.match(/\D/)? copy.stock : ((e.target.value && Number(e.target.value)) || 0)
-        return copy
-      })
+      const copy = { ...prev }
+      copy.stock = e.target.value.match(/\D/)
+        ? copy.stock
+        : (e.target.value && Number(e.target.value)) || 0
+      return copy
+    })
   }
 
   const handleRemoveImg = (img) => {
@@ -102,46 +109,63 @@ const ProductNew = ({storesName, setProducts}) => {
     ) {
       setCurrentProduct((prev) => {
         const copy = { ...prev }
-        copy.gallery= [...copy.gallery, currentValue]
+        copy.gallery = [...copy.gallery, currentValue]
         return copy
       })
     }
   }
 
   const handleSaveData = async () => {
-    const response = await axiosActual.post(
-      `products/new`,
-      currentProduct
-    )
+    const response = await axiosActual.post(`products/new`, currentProduct)
     console.log(response)
-    if(response.status === 200) setProducts(
-      prev => {const copy = [...prev, JSON.parse(response.data)]
-      return copy
-    }
-    )
+    if (response.status === 200)
+      setProducts((prev) => {
+        const copy = [...prev, JSON.parse(response.data)]
+        return copy
+      })
   }
 
   const handleReset = () => {
-    setCurrentProduct({stock:0, price:0, gallery:[]})
+    setCurrentProduct({ stock: 0, price: 0, gallery: [] })
   }
-
-
 
   return (
     <>
       <Header>
-        <div className = "containerIdDelete">
-            <p className="productId"> Productos {">"} Nuevo</p>
+        <div className="containerIdDelete">
+          <div className="productId">
+            <Link to="/products">
+              <p>Productos </p>
+            </Link>
+            <img
+              src="/assets/chevron-right (1).svg"
+              alt="chevron"
+              className="btn-box"
+            />
+            <p>Nuevo</p>
+          </div>
         </div>
       </Header>
       <main className=" mainAreaContent">
         <div className=" productViewContainer">
           <div className="formPageProduct">
             <MuestraPageProduct product={currentProduct} />
-            <input className="inputNewProduct" type="text" placeholder="ingrese una imagen" value={currentProduct.image} onChange={handleNewImg}></input>
-            <img className="imgNewProduct" src={currentProduct.image} alt={currentProduct.title}></img>
+            <input
+              className="inputNewProduct"
+              type="text"
+              placeholder="ingrese una imagen"
+              value={currentProduct.image}
+              onChange={handleNewImg}
+            ></input>
+            <img
+              className="imgNewProduct"
+              src={currentProduct.image}
+              alt={currentProduct.title}
+            ></img>
             <p className="tituloProductPage">Información</p>
-            <label className="labelProductPage"  for="name">Nombre</label>
+            <label className="labelProductPage" for="name">
+              Nombre
+            </label>
             <input
               onChange={handleTitle}
               className=" inputPageProduct"
@@ -152,7 +176,9 @@ const ProductNew = ({storesName, setProducts}) => {
             />
             {mensajeError && <p>{mensajeError}</p>}
 
-            <label className="labelProductPage" for="valor">Valor</label>
+            <label className="labelProductPage" for="valor">
+              Valor
+            </label>
             <input
               min="0"
               onChange={handlePrice}
@@ -163,7 +189,9 @@ const ProductNew = ({storesName, setProducts}) => {
               value={currentProduct.price}
             />
 
-            <label className="labelProductPage" for="stock">Stock</label>
+            <label className="labelProductPage" for="stock">
+              Stock
+            </label>
 
             <div className="containerInputPageProductStock">
               <button onClick={handleClickRest} className="buttonPageProduct">
@@ -182,7 +210,9 @@ const ProductNew = ({storesName, setProducts}) => {
               </button>
             </div>
 
-            <label className="labelProductPage" for="description">Descripción</label>
+            <label className="labelProductPage" for="description">
+              Descripción
+            </label>
             <textarea
               onChange={handleDescription}
               className="inputPageProductArea"
@@ -190,7 +220,9 @@ const ProductNew = ({storesName, setProducts}) => {
               value={currentProduct.description}
             />
 
-            <label className="labelProductPage" for="tienda">Tienda</label>
+            <label className="labelProductPage" for="tienda">
+              Tienda
+            </label>
             <select
               value={currentProduct.store || ''}
               onChange={handleSelectStore}
@@ -198,15 +230,19 @@ const ProductNew = ({storesName, setProducts}) => {
               name="tienda"
             >
               <option value="">Selecciona la tienda</option>
-              {storesName?.map(({name, _id}) => (
-                <option name={name} value={_id}>{name}</option>
+              {storesName?.map(({ name, _id }) => (
+                <option name={name} value={_id}>
+                  {name}
+                </option>
               ))}
             </select>
           </div>
 
           <p className="tituloProductPage">Galería de Imágenes</p>
           <div className="containerNuevaImagenInput">
-            <label className="labelProductPage" for="imagen">Nueva Imagen</label>
+            <label className="labelProductPage" for="imagen">
+              Nueva Imagen
+            </label>
             <input
               onKeyDown={handleInsertImg}
               ref={insertImgInput}
@@ -231,15 +267,8 @@ const ProductNew = ({storesName, setProducts}) => {
             ))}
           </div>
           <div className="buttonsPageProduct">
-            <Button
-              onClick={handleReset}
-            >
-              Resetear
-            </Button>
-            <Button
-              disabled={Boolean(mensajeError)}
-              onClick={handleSaveData}
-            >
+            <Button onClick={handleReset}>Resetear</Button>
+            <Button disabled={Boolean(mensajeError)} onClick={handleSaveData}>
               Guardar
             </Button>
           </div>
@@ -249,5 +278,4 @@ const ProductNew = ({storesName, setProducts}) => {
   )
 }
 
-export default ProductNew;
-
+export default ProductNew
